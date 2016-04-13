@@ -9,6 +9,8 @@
 #include "qtimer.h"
 #include "qpainter.h"
 
+#include "PlayerManager.h"
+
 class HoppHen : public QMainWindow
 {
 	Q_OBJECT
@@ -30,6 +32,9 @@ private:
 	QTimer* timer;
 	QPixmap* background;
 	int bgYPos;
+
+	//Object
+	PlayerManager playerManager;
 };
 
 #endif // HOPPHEN_H

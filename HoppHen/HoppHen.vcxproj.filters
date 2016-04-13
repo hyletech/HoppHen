@@ -80,5 +80,8 @@
     <Image Include="..\..\..\..\Visual Studio 2015\Projects\SpelProjekt\SpelProjekt\SpelProjektContent\Images\BackGround.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="..\..\..\..\GitHub\HoppHen\Eivind.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

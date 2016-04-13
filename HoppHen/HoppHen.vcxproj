@@ -134,6 +134,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\..\GitHub\HoppHen\Eivind.png" />
     <Image Include="..\..\..\..\Visual Studio 2015\Projects\SpelProjekt\SpelProjekt\SpelProjektContent\Images\BackGround.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

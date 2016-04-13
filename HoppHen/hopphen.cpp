@@ -33,6 +33,8 @@ void HoppHen::paintEvent(QPaintEvent * e)
 
 	p.drawPixmap(0, bgYPos, *background); //bakgrund
 
+	playerManager.paint(p);
+
 	/*for (int i = 0; i < _blocks.size(); i++)
 		_blocks[i]->paint(p);
 
