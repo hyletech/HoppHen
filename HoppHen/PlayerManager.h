@@ -11,9 +11,14 @@ class PlayerManager
 public:
 	PlayerManager();
 
+	bool moveLeft;
+	bool moveRight;
+
 	void Update();
 	void keyPressEvent(QKeyEvent* e);
 	void paint(QPainter& painter) const;
+	void MoveRight();
+	void MoveLeft();
 
 	~PlayerManager();
 
@@ -21,7 +26,6 @@ private:
 
 	QPixmap* playerTexture;
 	QRect* playerRect;
-
 
 };
 

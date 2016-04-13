@@ -4,9 +4,9 @@
 #define W_HEIGHT				800
 
 //Player
-#define P_WIDTH					100
-#define P_HEIGHT				100	
-#define MOVESPEED				10
+#define P_WIDTH					50
+#define P_HEIGHT				50
+#define MOVESPEED				5
 
 //Background
 #define BG_WIDTH				600

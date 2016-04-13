@@ -6,26 +6,33 @@ PlayerManager::PlayerManager()
 	playerTexture = new QPixmap("Eivind.png");
 	playerRect = new QRect(50,50,P_WIDTH,P_HEIGHT);
 
+	moveLeft = false;
+	moveRight = false;
+
 }
 
-void PlayerManager::keyPressEvent(QKeyEvent* e)
-{
-	if (e->key() == Qt::Key_A)
-	{
-		//playerRect->moveLeft(playerRect->getCoords.x += MOVESPEED);
-	}
-}
 
 PlayerManager::~PlayerManager()
 {
+
 }
 
-void Update()
+void PlayerManager::MoveRight()
 {
+	playerRect->moveLeft(playerRect->x() + MOVESPEED);
+}
 
+void PlayerManager::MoveLeft()
+{
+	playerRect->moveLeft(playerRect->x() - MOVESPEED);
+}
+
+void PlayerManager::Update()
+{
+	
 }
 
  void PlayerManager::paint(QPainter& painter) const
  {
-	painter.drawPixmap(playerRect->x(),playerRect->y(), *playerTexture);
+	painter.drawPixmap(playerRect->x(),playerRect->y(),P_WIDTH, P_HEIGHT, *playerTexture);
 }	
