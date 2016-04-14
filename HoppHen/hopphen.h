@@ -8,9 +8,11 @@
 #include <QTimer>
 #include <QPainter>
 #include <ctime>
+#include <vector>
 
 #include "defines.h"
 #include "PlayerManager.h"
+#include "Platform.h"
 
 class HoppHen : public QMainWindow
 {
@@ -26,6 +28,8 @@ public:
 	void keyPressEvent(QKeyEvent* e);
 	void keyReleaseEvent(QKeyEvent *e);
 
+	void initPlatforms();
+
 private slots:
 	void update();
 
@@ -36,7 +40,8 @@ private:
 	int bgYPos;
 
 	//Object
-	PlayerManager playerManager;
+	std::vector<Platform*> _platforms;
+	PlayerManager* playerManager;
 	QMap<int, bool> keys;
 };
 

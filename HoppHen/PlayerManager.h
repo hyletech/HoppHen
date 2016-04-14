@@ -17,10 +17,16 @@ public:
 	void MoveRight();
 	void MoveLeft();
 
+	float getyvel();
+	void setyvel(float yvel);
+
+	QRect* getRect() { return playerRect; }
+
 
 private:
 	QPixmap* playerTexture;
 	QRect* playerRect;
+	float _yvel;
 
 	bool moveLeft;
 	bool moveRight;

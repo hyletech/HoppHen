@@ -2,6 +2,7 @@
 #include <qrect.h>
 #include "defines.h"
 #include <QPainter>
+#include "PlayerManager.h"
 
 
 class Platform
@@ -9,7 +10,7 @@ class Platform
 public:
 	Platform(int xPos, int yPos);
 
-	void Update();
+	void Update(PlayerManager* playerManager);
 	void paint(QPainter& painter) const;
 	void setPosition(int x, int y);
 	QRect getRect() const { return *platformRect; }
