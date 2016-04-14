@@ -11,7 +11,7 @@ public:
 	void changeSpeed(int speed) { worldSpeed = speed; }
 	void initPlatforms();
 
-	std::list<Platform>& getPlatforms() { return platforms; }
+	std::list<Platform>& getPlatforms() { return *platforms; }
 	float getWorldSpeed()		const { return worldSpeed; }
 	float getSpeedDecrease()	const { return speedDecrease; }
 	float getScore()			const { return score; }
