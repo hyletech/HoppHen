@@ -23,6 +23,7 @@ public:
 	void mouseMoveEvent(QMouseEvent* e);
 	void mousePressEvent(QMouseEvent* e);
 	void keyPressEvent(QKeyEvent* e);
+	void keyReleaseEvent(QKeyEvent *e);
 
 private slots:
 	void update();
@@ -35,6 +36,7 @@ private:
 
 	//Object
 	PlayerManager playerManager;
+	QMap<int, bool> keys;
 };
 
 #endif // HOPPHEN_H

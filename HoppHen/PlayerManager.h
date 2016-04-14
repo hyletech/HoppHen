@@ -15,7 +15,6 @@ public:
 	bool moveRight;
 
 	void Update();
-	void keyPressEvent(QKeyEvent* e);
 	void paint(QPainter& painter) const;
 	void MoveRight();
 	void MoveLeft();

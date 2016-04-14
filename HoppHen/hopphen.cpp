@@ -24,6 +24,10 @@ HoppHen::HoppHen(QWidget *parent)
 
 void HoppHen::update() //hitcheck
 {
+	if (keys[Qt::Key_Right] || keys[Qt::Key_D])
+		playerManager.MoveRight();
+	else if (keys[Qt::Key_Left] || keys[Qt::Key_A])
+		playerManager.MoveLeft();
 
 	playerManager.Update();
 
@@ -61,19 +65,16 @@ void HoppHen::mousePressEvent(QMouseEvent* e)
 {
 }
 
+void HoppHen::keyReleaseEvent(QKeyEvent *e)
+{
+	keys[e->key()] = false; 
+	QWidget::keyReleaseEvent(e);
+}
+
+
 void HoppHen::keyPressEvent(QKeyEvent* e)
 {
-	//MoveRight
-	if (e->key() == Qt::Key_D)
-	{
-		playerManager.MoveRight();
-	}
-
-	//MoveLeft
-	if (e->key() == Qt::Key_A)
-	{
-		playerManager.MoveLeft();
-	}
+	keys[e->key()] = true; 
 }
 
 
