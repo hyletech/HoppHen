@@ -92,6 +92,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="PlayerManager.cpp" />
+    <ClCompile Include="WorldManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="hopphen.h">
@@ -122,6 +123,7 @@
     <ClInclude Include="defines.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="PlayerManager.h" />
+    <ClInclude Include="WorldManager.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="hopphen.qrc">

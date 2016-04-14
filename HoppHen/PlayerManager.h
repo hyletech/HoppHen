@@ -8,21 +8,22 @@ class PlayerManager
 {
 public:
 	PlayerManager();
+	~PlayerManager();
 
-	bool moveLeft;
-	bool moveRight;
 
+	void initialize();
 	void Update();
 	void paint(QPainter& painter) const;
 	void MoveRight();
 	void MoveLeft();
 
-	~PlayerManager();
 
 private:
-
 	QPixmap* playerTexture;
 	QRect* playerRect;
 
+	bool moveLeft;
+	bool moveRight;
+	bool jumpBool; //Allows the player to jump once
 };
 

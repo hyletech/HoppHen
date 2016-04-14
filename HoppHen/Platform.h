@@ -12,6 +12,7 @@ public:
 	void Update();
 	void paint(QPainter& painter) const;
 	void setPosition(int x, int y);
+	QRect getRect() const { return *platformRect; }
 
 private:
 	QPixmap* platformTexture;

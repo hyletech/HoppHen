@@ -5,10 +5,11 @@
 #include "ui_hopphen.h"
 #include <QMouseEvent>
 #include <QKeyEvent>
-#include "defines.h"
-#include "qtimer.h"
-#include "qpainter.h"
+#include <QTimer>
+#include <QPainter>
+#include <ctime>
 
+#include "defines.h"
 #include "PlayerManager.h"
 
 class HoppHen : public QMainWindow
