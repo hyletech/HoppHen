@@ -2,8 +2,6 @@
 #include "defines.h"
 #include <vector>
 #include <QPainter>
-#include <QKeyEvent>
-#include "qpainter.h"
 
 #pragma once
 class PlayerManager

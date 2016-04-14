@@ -90,6 +90,7 @@
     </ClCompile>
     <ClCompile Include="hopphen.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Platform.cpp" />
     <ClCompile Include="PlayerManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +120,7 @@
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_hopphen.h" />
     <ClInclude Include="defines.h" />
+    <ClInclude Include="Platform.h" />
     <ClInclude Include="PlayerManager.h" />
   </ItemGroup>
   <ItemGroup>
