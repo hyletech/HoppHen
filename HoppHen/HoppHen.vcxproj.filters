@@ -112,6 +112,9 @@
     </Image>
     <Image Include="bitmap1.bmp" />
     <Image Include="monster-clip-art-flying-monster-clipart.png" />
+    <Image Include="..\..\..\..\Desktop\monster1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="HoppHen.rc" />

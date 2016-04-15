@@ -2,7 +2,7 @@
 
 Enemy::Enemy()
 {
-	enemyTexture = new QPixmap(""); //Fixa bild
+	enemyTexture = new QPixmap("monster1.png"); //Fixa bild
 	enemyRect = new QRect(E_START_POS_X, E_START_POS_Y, E_WIDTH, E_HEIGHT);
 
 	_yvel = 0;
@@ -14,7 +14,6 @@ Enemy::Enemy()
 
 Enemy::Enemy(int xPos, int yPos)
 {
-	enemyTexture = new QPixmap(""); //Fixa bild
 	enemyRect = new QRect(xPos, yPos, E_WIDTH, E_HEIGHT);
 
 	xVel = 5;
@@ -53,6 +52,8 @@ void Enemy::paint(QPainter& painter) const
 	QBrush br;
 	br.setColor(Qt::blue);
 	painter.setBrush(br);
-	painter.drawRect(enemyRect->x(), enemyRect->y(), E_WIDTH, E_HEIGHT);
+	//painter.drawRect(enemyRect->x(), enemyRect->y(), E_WIDTH, E_HEIGHT);
+	painter.drawPixmap(enemyRect->x(), enemyRect->y(), E_WIDTH, E_HEIGHT, *enemyTexture);
+
 }
 
