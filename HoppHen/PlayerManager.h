@@ -20,10 +20,16 @@ public:
 	void MoveLeft();
 	void MoveDampen();
 
+	float getyvel();
+	void setyvel(float yvel);
+
+	QRect* getRect() { return playerRect; }
+
 
 private:
 	QPixmap* playerTexture;
 	QRect* playerRect;
+	float _yvel;
 
 	int xVel;	//Velocity of player
 	double moveSpeed;
