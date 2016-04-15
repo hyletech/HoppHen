@@ -13,7 +13,7 @@
 #include "defines.h"
 #include "PlayerManager.h"
 #include "Platform.h"
-//#include "Enemy.h"
+#include "Enemy.h"
 
 class HoppHen : public QMainWindow
 {
@@ -39,7 +39,7 @@ private:
 	int bgYPos;
 
 	//Object
-	//Enemy* enemy;
+	Enemy* enemy;
 	std::vector<Platform*> _platforms;
 	PlayerManager* playerManager;
 	QPoint* playerBottom;
