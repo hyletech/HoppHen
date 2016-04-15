@@ -54,7 +54,14 @@ void PlayerManager::Update()
 	playerRect->moveLeft(newX);
 }
 
- void PlayerManager::paint(QPainter& painter) const
- {
-	painter.drawPixmap(playerRect->x(),playerRect->y(),P_WIDTH, P_HEIGHT, *playerTexture);
-}	
+void PlayerManager::paint(QPainter& painter) const
+{
+#if 1
+	painter.drawPixmap(playerRect->x(), playerRect->y(), P_WIDTH, P_HEIGHT, *playerTexture);
+#else
+	QBrush br;
+	br.setColor(Qt::blue);
+	painter.setBrush(br);
+	painter.drawRect(playerRect->x(), playerRect->y(), playerRect->width(), playerRect->height());
+#endif
+}

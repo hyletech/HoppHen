@@ -37,7 +37,9 @@ HoppHen::~HoppHen()
 void HoppHen::update() //hitcheck
 {
 	srand(time(NULL));
+
 	//KeyInput
+	//Player movement
 	if (keys[Qt::Key_Right] || keys[Qt::Key_D])
 		playerManager->MoveRight();
 	else if (keys[Qt::Key_Left] || keys[Qt::Key_A])
@@ -45,18 +47,16 @@ void HoppHen::update() //hitcheck
 	else
 		playerManager->MoveDampen();
 
-		playerManager->MoveLeft();
-
-	if (keys[Qt::Key_Escape])
+	//Stäng av spelet
+	if (keys[Qt::Key_Escape]) 
 		close();
 
-	QPoint* point = new QPoint(playerManager->getRect()->x() + (PF_WIDTH/2), playerManager->getRect()->y() + PF_HEIGHT);
-
+	//Uppdatera plattformerna, samt hitcheck med spelare och plattform
 	for (int i = 0; i < _platforms.size(); i++)
 	{
-		if (point->y() <= 400)
+		if (playerManager->getRect()->y() <= 400) //Om spelaren är mellan 0-400 px från top
 			_platforms[i]->startMoving();
-
+		
 		_platforms[i]->Update(playerManager);
 	}
 
@@ -77,14 +77,15 @@ void HoppHen::paintEvent(QPaintEvent * e)
 	playerManager->paint(p);
 }
 
-void HoppHen::mouseMoveEvent(QMouseEvent* e)
-{
-	//rack->setPosition(e->x());
-}
-
-void HoppHen::mousePressEvent(QMouseEvent* e)
-{
-}
+//void HoppHen::mouseMoveEvent(QMouseEvent* e)
+//{
+//	//rack->setPosition(e->x());
+//}
+//
+//void HoppHen::mousePressEvent(QMouseEvent* e)
+//{
+//
+//}
 
 void HoppHen::keyReleaseEvent(QKeyEvent *e)
 {

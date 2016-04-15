@@ -9,18 +9,20 @@ Platform::Platform(int xPos, int yPos)
 
 void Platform::Update(PlayerManager* playerManager)
 {
-	QPoint* pointLeft = new QPoint(playerManager->getRect()->x() + 15, playerManager->getRect()->y() + PF_HEIGHT);                 // Punkt i nedre vänsterkanten på player
-	QPoint* pointRight = new QPoint(playerManager->getRect()->x() + (PF_WIDTH -15), playerManager->getRect()->y() + PF_HEIGHT);     // Punkt i nedre högerkanten på player
+	QPoint pointLeft(playerManager->getRect()->bottomLeft());	// Punkt i nedre vänsterkanten på player
+	QPoint pointRight(playerManager->getRect()->bottomRight());	// Punkt i nedre högerkanten på player
 
-	if ((pointLeft->y() <= 400) || (pointRight->y() <= 400))
+#if MOVE_WORLD 1 //se i defines.h
+	if (pointLeft.y() <= 400 || pointRight.y() <= 400)
 		moving = 1;
 	if (moving)
 	{
 		platformRect->moveBottom(platformRect->bottom() + _yvel);
 		moving = 0;
 	}
+#endif
 
-	if (platformRect->contains(*pointLeft) || platformRect->contains(*pointRight))
+	if (platformRect->contains(pointLeft) || platformRect->contains(pointRight))
 	{
 		playerManager->getRect()->moveBottom(playerManager->getRect()->bottom() + playerManager->getyvel());
 		if (playerManager->getyvel() >= 0)
