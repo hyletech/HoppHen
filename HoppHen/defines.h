@@ -19,7 +19,7 @@
 #define E_HEIGHT		100
 #define E_START_POS_X	((W_WIDTH / 2) - (E_WIDTH / 2))
 #define E_START_POS_Y	E_HEIGHT //Gör att den spawnar precis utanför skärmen
-#define E_PADDING		100 //100 px från väggen byter den håll
+#define E_PADDING		50 //px från väggen byter den håll
 #define E_DAMP_INTERVAL	0.2
 
 //Background

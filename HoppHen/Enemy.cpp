@@ -35,15 +35,12 @@ void Enemy::initialize()
 
 void Enemy::update(float worldSpeed)
 {
-	if (enemyRect->right() < W_WIDTH - E_PADDING && xVel > 0)
-		MoveRight();
-	else
+	if (enemyRect->right() > W_WIDTH - E_PADDING && xVel > 0)
+		xVel *= -1;
+	else if (enemyRect->left() < E_PADDING && xVel < 0)
 		xVel *= -1;
 
-	if (enemyRect->left() > E_PADDING && xVel < 0)
-		MoveLeft();
-	else 
-		xVel *= -1;
+	enemyRect->moveLeft(enemyRect->x() + xVel);
 
 
 #if MOVE_WORLD 1 //se i defines.h
