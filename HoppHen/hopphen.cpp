@@ -37,6 +37,8 @@ void HoppHen::update() //hitcheck
 		playerManager.MoveRight();
 	else if (keys[Qt::Key_Left] || keys[Qt::Key_A])
 		playerManager.MoveLeft();
+	else
+		playerManager.MoveDampen();
 
 	if (keys[Qt::Key_Escape])
 		close();
@@ -51,22 +53,11 @@ void HoppHen::paintEvent(QPaintEvent * e)
 {
 	QPainter p(this);
 
-	p.drawPixmap(0, bgYPos, *background); //bakgrund
+	p.drawPixmap(0, bgYPos, *background);		//bakgrund
 
-	playerManager.paint(p);
+	
 
-	/*for (int i = 0; i < _blocks.size(); i++)
-		_blocks[i]->paint(p);
-
-	if (_powerups.size() > 0)
-	{
-		for (int i = 0; i < _powerups.size(); i++)
-			_powerups[i]->paint(p);
-	}
-
-	rack->paint(p);
-	boll->paint(p);
-	score->paint(p, *score, *boll);*/
+	playerManager.paint(p);						//Spelare
 }
 
 void HoppHen::mouseMoveEvent(QMouseEvent* e)

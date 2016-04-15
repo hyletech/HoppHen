@@ -16,3 +16,8 @@ void WorldManager::initPlatforms()
 		platforms->push_back(*p);
 	}
 }
+
+void WorldManager::paint(QPainter& painter) const
+{
+	//painter.drawPixmap(playerRect->x(), playerRect->y(), P_WIDTH, P_HEIGHT, *playerTexture);
+}

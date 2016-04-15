@@ -17,9 +17,10 @@ public:
 	float getScore()			const { return score; }
 	float getHeight()			const { return height; }
 
+	void paint(QPainter& painter) const;
 
 private:
-	std::list<Platform> *platforms; //Byta ut till vector? Gör det som du kan bäst
+	std::list<Platform> *platforms;
 
 	float worldSpeed;
 	float speedDecrease;

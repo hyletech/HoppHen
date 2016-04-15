@@ -14,13 +14,21 @@ public:
 	void initialize();
 	void Update();
 	void paint(QPainter& painter) const;
+
+	//Movement
 	void MoveRight();
 	void MoveLeft();
+	void MoveDampen();
 
 
 private:
 	QPixmap* playerTexture;
 	QRect* playerRect;
+
+	int xVel;	//Velocity of player
+	double moveSpeed;
+	double maxSpeed;
+	int xDampen;
 
 	bool moveLeft;
 	bool moveRight;

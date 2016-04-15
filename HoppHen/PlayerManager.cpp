@@ -6,6 +6,11 @@ PlayerManager::PlayerManager()
 	playerTexture = new QPixmap("Eivind.png");
 	playerRect = new QRect(P_START_POS_X, P_START_POS_Y, P_WIDTH, P_HEIGHT);
 
+	xVel = 0;
+	moveSpeed = 1;
+	maxSpeed = 5;
+	xDampen = 1;
+
 	moveLeft = false;
 	moveRight = false;
 	jumpBool = 0; 
@@ -20,12 +25,22 @@ PlayerManager::~PlayerManager()
 
 void PlayerManager::MoveRight()
 {
-	playerRect->moveLeft(playerRect->x() + MOVESPEED);
+	if (xVel < maxSpeed)
+		xVel += moveSpeed;
 }
 
 void PlayerManager::MoveLeft()
 {
-	playerRect->moveLeft(playerRect->x() - MOVESPEED);
+	if (xVel > -maxSpeed)
+		xVel -= moveSpeed;
+}
+
+void PlayerManager::MoveDampen()
+{
+	if (xVel < 0)
+		xVel += xDampen;
+	if (xVel > 0)
+		xVel -= xDampen;
 }
 
 void PlayerManager::initialize()
@@ -35,7 +50,8 @@ void PlayerManager::initialize()
 
 void PlayerManager::Update()
 {
-	
+	int newX = playerRect->x() + xVel;
+	playerRect->moveLeft(newX);
 }
 
  void PlayerManager::paint(QPainter& painter) const
