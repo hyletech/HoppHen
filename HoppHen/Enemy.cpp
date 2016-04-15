@@ -57,27 +57,3 @@ void Enemy::paint(QPainter& painter) const
 	painter.drawRect(enemyRect->x(), enemyRect->y(), E_WIDTH, E_HEIGHT);
 }
 
-void Enemy::MoveRight()
-{
-	//Ökar hastigheten i X
-	if (xVel < maxSpeed)
-		xVel += moveSpeed;
-}
-
-void Enemy::MoveLeft()
-{
-	//Minskar hastigheten i X
-	if (xVel > -maxSpeed)
-		xVel -= moveSpeed;
-}
-
-void Enemy::MoveDampen()
-{
-	//Stannar spelaren i X-Led
-	if (xVel <= 0)
-		xVel += xDampen;
-	else if (xVel >= 0)
-		xVel -= xDampen;
-	if (xVel < P_DAMP_INTERVAL && xVel > -P_DAMP_INTERVAL)
-		xVel = 0;
-}

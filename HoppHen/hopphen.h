@@ -14,6 +14,7 @@
 #include "Player.h"
 #include "Platform.h"
 #include "Enemy.h"
+#include "WorldManager.h"
 
 class HoppHen : public QMainWindow
 {
@@ -34,16 +35,20 @@ private slots:
 
 private:
 	Ui::HoppHenClass ui;
-	QTimer* timer;
-	QPixmap* background;
-	int bgYPos;
+	QTimer* _timer;
+	QPixmap* _background;
 
 	//Object
-	Enemy* enemy;
+	Enemy* _enemy;
 	std::vector<Platform*> _platforms;
-	Player* player;
-	QPoint* playerBottom;
-	QMap<int, bool> keys;
+	Player* _player;
+	QPoint* _playerBottom;
+	QMap<int, bool> _keys;
+
+	bool _moveWorld;
+	float _worldSpeed;
+	int _bgYPos;
+
 };
 
 #endif // HOPPHEN_H
