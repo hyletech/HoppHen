@@ -32,14 +32,14 @@ private:
 	int bottomBoundary;
 	int topBoundary;
 
-	float worldSpeed;
 	float speedDecrease;
 	float score;
 	float height;
+	float worldSpeed;
 
-	int platFormCount     = 10;
-	int platformYDistance = 100;
-	int enemieCount = 10;
-	int enemieYDistance = 100;
+	int platFormCount		= 10;
+	int platformYDistance	= 100;
+	int enemieCount			= 10;
+	int enemieYDistance		= 100;
 
 };

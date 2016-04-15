@@ -15,12 +15,11 @@ public:
 	void setPosition(int x, int y);
 	QRect getRect() const { return *platformRect; }
 
-	void startMoving();
+	void startMove(float vel) { _yvel = vel; }
+	void stopMove() { _yvel = 0; }
 
 private:
 	QPixmap* platformTexture;
 	QRect* platformRect;
 	float _yvel;
-
-	bool moving;
 };

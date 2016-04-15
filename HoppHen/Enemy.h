@@ -16,11 +16,6 @@ public:
 	void update(float worldSpeed);
 	void paint(QPainter& painter) const;
 
-	//Movement
-	void MoveRight();
-	void MoveLeft();
-	void MoveDampen();
-
 	QRect* getRect() { return enemyRect; }
 
 private:
