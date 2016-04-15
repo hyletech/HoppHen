@@ -7,9 +7,9 @@ PlayerManager::PlayerManager()
 	playerRect = new QRect(P_START_POS_X, P_START_POS_Y, P_WIDTH, P_HEIGHT);
 
 	xVel = 0;
-	moveSpeed = 1;
+	moveSpeed = 0.2;
 	maxSpeed = 5;
-	xDampen = 1;
+	xDampen = 0.2;
 
 	moveLeft = false;
 	moveRight = false;

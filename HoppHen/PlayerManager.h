@@ -32,10 +32,10 @@ private:
 	QRect* playerRect;
 	float _yvel;
 
-	int xVel;	//Velocity of player
+	double xVel;	//Velocity of player
 	double moveSpeed;
 	double maxSpeed;
-	int xDampen;
+	double xDampen;
 
 	bool moveLeft;
 	bool moveRight;
