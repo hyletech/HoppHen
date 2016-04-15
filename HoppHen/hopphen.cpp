@@ -10,6 +10,8 @@ HoppHen::HoppHen(QWidget *parent)
 
 	initPlatforms();
 
+	//enemy = new Enemy();
+
 	//Window
 	setFixedWidth(W_WIDTH);	
 	setFixedHeight(W_HEIGHT);
@@ -60,6 +62,7 @@ void HoppHen::update() //hitcheck
 		_platforms[i]->Update(playerManager);
 	}
 
+	//enemy->update(0);
 	playerManager->Update();
 
 	repaint();
@@ -74,6 +77,7 @@ void HoppHen::paintEvent(QPaintEvent * e)
 	for (int i = 0; i < _platforms.size(); i++)
 		_platforms[i]->paint(p);
 
+	//enemy->paint(p);
 	playerManager->paint(p);
 }
 
