@@ -23,7 +23,7 @@ public:
 	float getyvel() const  { return _yvel; }
 	void setyvel(float yvel) { _yvel = yvel; }
 
-
+	int getYPos(){ return playerRect->y(); }
 	QRect* getRect() { return playerRect; }
 
 

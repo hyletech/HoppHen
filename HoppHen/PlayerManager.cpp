@@ -10,7 +10,7 @@ PlayerManager::PlayerManager()
 	_yvel = 1;
 	xVel = 0;
 	moveSpeed = 0.2;
-	maxSpeed = 5;
+	maxSpeed = 7;
 	xDampen = 0.2;
 
 	moveLeft = false;
