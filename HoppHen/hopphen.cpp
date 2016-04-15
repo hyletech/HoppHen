@@ -132,6 +132,9 @@ void HoppHen::initPlatforms()
 			spaceY += 120;
 		}
 	}
+<<<<<<< HEAD
+}
+=======
 #else
 	//Random i x-led
 	if (_platforms.size() == 0)
@@ -146,3 +149,4 @@ void HoppHen::initPlatforms()
 	}
 #endif
 }
+>>>>>>> 541c19b61b8956758bd1ea24130887544d5c3bc3

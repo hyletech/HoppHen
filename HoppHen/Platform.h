@@ -18,7 +18,7 @@ public:
 	void startMove(float vel) { _yvel = vel; }
 	void stopMove() { _yvel = 0; }
 
-private:
+protected:
 	QPixmap* platformTexture;
 	QRect* platformRect;
 	float _yvel;
