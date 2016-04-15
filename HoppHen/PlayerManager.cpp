@@ -22,15 +22,15 @@ PlayerManager::~PlayerManager()
 
 void PlayerManager::MoveRight()
 {
-	if ((playerRect->left() + 25) > 600)
-		playerRect->setLeft(-25);
+	if (playerRect->center().x() > W_WIDTH)
+		playerRect->moveLeft(- P_WIDTH / 2);
 	playerRect->moveLeft(playerRect->x() + MOVESPEED);
 }
 
 void PlayerManager::MoveLeft()
 {
-	if ((playerRect->left() + 25) < 0)
-		playerRect->setLeft(625);
+	if (playerRect->center().x() < 0)
+		playerRect->moveLeft(W_WIDTH + P_WIDTH / 2);
 	playerRect->moveLeft(playerRect->x() - MOVESPEED);
 }
 
@@ -55,6 +55,13 @@ void PlayerManager::Update()
 }
 
  void PlayerManager::paint(QPainter& painter) const
- {
-	painter.drawPixmap(playerRect->x(),playerRect->y(),P_WIDTH, P_HEIGHT, *playerTexture);
-}	
+{
+#if 1
+	painter.drawPixmap(playerRect->x(), playerRect->y(), P_WIDTH, P_HEIGHT, *playerTexture);
+#else
+	QBrush br;
+	br.setColor(Qt::blue);
+	painter.setBrush(br);
+	painter.drawRect(playerRect->x(), playerRect->y(), playerRect->width(), playerRect->height());
+#endif
+}

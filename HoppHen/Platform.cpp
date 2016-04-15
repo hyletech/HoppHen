@@ -12,6 +12,7 @@ void Platform::Update(PlayerManager* playerManager)
 	QPoint pointLeft(playerManager->getRect()->bottomLeft());	// Punkt i nedre vänsterkanten på player
 	QPoint pointRight(playerManager->getRect()->bottomRight());	// Punkt i nedre högerkanten på player
 
+#if MOVE_WORLD 1 //se i defines.h
 	if (pointLeft.y() <= 400 || pointRight.y() <= 400)
 		moving = 1;
 	if (moving)
@@ -19,6 +20,7 @@ void Platform::Update(PlayerManager* playerManager)
 		platformRect->moveBottom(platformRect->bottom() + _yvel);
 		moving = 0;
 	}
+#endif
 
 	if (platformRect->contains(pointLeft) || platformRect->contains(pointRight))
 	{
