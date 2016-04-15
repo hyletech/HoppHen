@@ -6,6 +6,7 @@ HoppHen::HoppHen(QWidget *parent)
 	ui.setupUi(this);
 
 	playerManager = new PlayerManager();
+	playerBottom = new QPoint();
 
 	initPlatforms();
 
@@ -45,8 +46,13 @@ void HoppHen::update() //hitcheck
 	if (keys[Qt::Key_Escape])
 		close();
 
+	QPoint* point = new QPoint(playerManager->getRect()->x() + (PF_WIDTH/2), playerManager->getRect()->y() + PF_HEIGHT);
+
 	for (int i = 0; i < _platforms.size(); i++)
 	{
+		if (point->y() <= 400)
+			_platforms[i]->startMoving();
+
 		_platforms[i]->Update(playerManager);
 	}
 
@@ -102,15 +108,17 @@ void HoppHen::keyPressEvent(QKeyEvent* e)
 
 void HoppHen::initPlatforms()
 {
-	int space = 0;
+	int spaceX = 0;
+	int spaceY = 50;
 
 	if (_platforms.size() == 0)
 	{
 		for (int x = 0; x < 25; x++)
 		{
-			Platform* n = new Platform(space, space);
+			Platform* n = new Platform(spaceX, spaceY);
 			_platforms.push_back(n);
-			space += 25;
+			spaceX += 25;
+			spaceY += 120;
 		}
 	}
 }

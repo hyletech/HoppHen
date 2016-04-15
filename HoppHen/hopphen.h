@@ -42,6 +42,7 @@ private:
 	//Object
 	std::vector<Platform*> _platforms;
 	PlayerManager* playerManager;
+	QPoint* playerBottom;
 	QMap<int, bool> keys;
 };
 
