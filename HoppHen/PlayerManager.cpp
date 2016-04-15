@@ -30,7 +30,7 @@ void PlayerManager::MoveRight()
 void PlayerManager::MoveLeft()
 {
 	if (playerRect->center().x() < 0)
-		playerRect->moveLeft(W_WIDTH + P_WIDTH / 2);
+		playerRect->moveLeft(W_WIDTH - P_WIDTH / 2);
 	playerRect->moveLeft(playerRect->x() - MOVESPEED);
 }
 
