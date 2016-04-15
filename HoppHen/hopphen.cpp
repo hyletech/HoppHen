@@ -70,7 +70,12 @@ void HoppHen::update() //hitcheck
 		_platforms[i]->Update(_player);
 	}
 
-	_enemy->update(0);
+	if (_moveWorld)
+		_enemy->startMove(_worldSpeed);
+	else
+		_enemy->stopMove();
+
+	_enemy->update();
 	_player->Update();
 
 	repaint();

@@ -5,6 +5,7 @@ Enemy::Enemy()
 	enemyTexture = new QPixmap(""); //Fixa bild
 	enemyRect = new QRect(E_START_POS_X, E_START_POS_Y, E_WIDTH, E_HEIGHT);
 
+	_yvel = 0;
 	xVel = 5;
 	moveSpeed = 0.2;
 	maxSpeed = 5;
@@ -33,7 +34,7 @@ void Enemy::initialize()
 
 }
 
-void Enemy::update(float worldSpeed)
+void Enemy::update()
 {
 	if (enemyRect->right() > W_WIDTH - E_PADDING && xVel > 0)
 		xVel *= -1;
@@ -42,12 +43,10 @@ void Enemy::update(float worldSpeed)
 
 	enemyRect->moveLeft(enemyRect->x() + xVel);
 
+	enemyRect->moveBottom(enemyRect->bottom() + _yvel);
 
-#if MOVE_WORLD 1 //se i defines.h
-	if (worldSpeed > 0)
-		enemyRect->moveBottom(enemyRect->bottom() + worldSpeed);
-#endif
 }
+
 
 void Enemy::paint(QPainter& painter) const
 {

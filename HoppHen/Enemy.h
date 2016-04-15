@@ -13,14 +13,20 @@ public:
 
 
 	void initialize();
-	void update(float worldSpeed);
+	void update();
 	void paint(QPainter& painter) const;
+
+	void startMove(float vel) { _yvel = vel; }
+	void stopMove() { _yvel = 0; }
+
 
 	QRect* getRect() { return enemyRect; }
 
 private:
 	QPixmap* enemyTexture;
 	QRect* enemyRect;
+
+	float _yvel;
 	float xVel;
 	float moveSpeed;
 	float maxSpeed;
