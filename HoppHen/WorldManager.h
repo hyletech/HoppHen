@@ -17,10 +17,15 @@ public:
 	float getScore()			const { return score; }
 	float getHeight()			const { return height; }
 
+	void Update();
 	void paint(QPainter& painter) const;
 
 private:
 	std::list<Platform> *platforms;
+
+	//Boundaries
+	int bottomBoundary;
+	int topBoundary;
 
 	float worldSpeed;
 	float speedDecrease;

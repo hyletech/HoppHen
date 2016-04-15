@@ -5,6 +5,7 @@ PlayerManager::PlayerManager()
 {
 	playerTexture = new QPixmap("Eivind.png");
 	playerRect = new QRect(P_START_POS_X, P_START_POS_Y, P_WIDTH, P_HEIGHT);
+	playerRect1 = new QRect(P_START_POS_X + W_WIDTH, P_START_POS_Y, P_WIDTH, P_HEIGHT);
 
 	_yvel = 1;
 	xVel = 0;
@@ -53,6 +54,7 @@ void PlayerManager::initialize()
 {
 	//Ändrar spelarens startposition
 	playerRect->moveTopLeft(QPoint(P_START_POS_X, P_START_POS_Y));
+	playerRect1->moveTopLeft(QPoint(P_START_POS_X + W_WIDTH, P_START_POS_Y));
 }
 
 void PlayerManager::Update()
@@ -61,6 +63,7 @@ void PlayerManager::Update()
 	int newX = playerRect->x() + xVel;
 	playerRect->moveLeft(newX);
 
+	//PlayerTeleport
 	//Teleporterar spelaren om han når kanten av skärmen
 	if (playerRect->center().x() > W_WIDTH)
 		playerRect->moveLeft(-P_WIDTH / 2);
@@ -84,6 +87,7 @@ void PlayerManager::Update()
 void PlayerManager::paint(QPainter& painter) const
 {
 #if 1
+	painter.drawPixmap(playerRect->x(), playerRect->y(), P_WIDTH, P_HEIGHT, *playerTexture);
 	painter.drawPixmap(playerRect->x(), playerRect->y(), P_WIDTH, P_HEIGHT, *playerTexture);
 #else
 	QBrush br;
