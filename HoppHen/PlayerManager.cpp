@@ -22,11 +22,15 @@ PlayerManager::~PlayerManager()
 
 void PlayerManager::MoveRight()
 {
+	if ((playerRect->left() + 25) > 600)
+		playerRect->setLeft(-25);
 	playerRect->moveLeft(playerRect->x() + MOVESPEED);
 }
 
 void PlayerManager::MoveLeft()
 {
+	if ((playerRect->left() + 25) < 0)
+		playerRect->setLeft(625);
 	playerRect->moveLeft(playerRect->x() - MOVESPEED);
 }
 
