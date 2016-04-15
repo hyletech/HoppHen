@@ -28,6 +28,4 @@
 #define BG_MINPOS		-1200	
 #define BG_MAXPOS		0
 
-
-
-#define MOVE_WORLD		1
+#define MOVE_WORLD		0

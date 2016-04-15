@@ -2,7 +2,9 @@
 
 WorldManager::WorldManager()
 {
-	
+	//Boundaries
+	bottomBoundary = W_HEIGHT + 50;
+	topBoundary = -100;
 }
 
 //Init of platforms
@@ -15,6 +17,15 @@ void WorldManager::initPlatforms()
 		Platform* p = new Platform(xPos, yPos);
 		platforms->push_back(*p);
 	}
+}
+
+void WorldManager::Update()
+{
+	//if (player.getRect)
+	/*for (int i = 0; i < platforms->size; i++)
+	{
+	if (platforms[i])
+	}*/
 }
 
 void WorldManager::initEnemies()
@@ -30,7 +41,6 @@ void WorldManager::initEnemies()
 		enemies->push_back(*e);
 	}
 	*/
-
 }
 
 void WorldManager::paint(QPainter& painter) const

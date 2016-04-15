@@ -4,11 +4,11 @@
 #include <QPainter>
 
 #pragma once
-class PlayerManager
+class Player
 {
 public:
-	PlayerManager();
-	~PlayerManager();
+	Player();
+	~Player();
 
 
 	void initialize();
@@ -23,13 +23,14 @@ public:
 	float getyvel() const  { return _yvel; }
 	void setyvel(float yvel) { _yvel = yvel; }
 
-
+	int getYPos(){ return playerRect->y(); }
 	QRect* getRect() { return playerRect; }
 
 
 private:
 	QPixmap* playerTexture;
 	QRect* playerRect;
+	QRect* playerRect1;
 	float _yvel;
 
 	double xVel;	//Velocity of player

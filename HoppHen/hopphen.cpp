@@ -5,7 +5,7 @@ HoppHen::HoppHen(QWidget *parent)
 {
 	ui.setupUi(this);
 
-	playerManager = new PlayerManager();
+	player = new Player();
 	playerBottom = new QPoint();
 
 	initPlatforms();
@@ -43,11 +43,11 @@ void HoppHen::update() //hitcheck
 	//KeyInput
 	//Player movement
 	if (keys[Qt::Key_Right] || keys[Qt::Key_D])
-		playerManager->MoveRight();
+		player->MoveRight();
 	else if(keys[Qt::Key_Left] || keys[Qt::Key_A])
-		playerManager->MoveLeft();
+		player->MoveLeft();
 	else
-		playerManager->MoveDampen();
+		player->MoveDampen();
 
 	//Stäng av spelet
 	if (keys[Qt::Key_Escape]) 
@@ -56,14 +56,14 @@ void HoppHen::update() //hitcheck
 	//Uppdatera plattformerna, samt hitcheck med spelare och plattform
 	for (int i = 0; i < _platforms.size(); i++)
 	{
-		if (playerManager->getRect()->y() <= 400) //Om spelaren är mellan 0-400 px från top
+		if (player->getRect()->y() <= 400) //Om spelaren är mellan 0-400 px från top
 			_platforms[i]->startMoving();
 		
-		_platforms[i]->Update(playerManager);
+		_platforms[i]->Update(player);
 	}
 
 	enemy->update(0);
-	playerManager->Update();
+	player->Update();
 
 	repaint();
 }
@@ -78,7 +78,7 @@ void HoppHen::paintEvent(QPaintEvent * e)
 		_platforms[i]->paint(p);
 
 	enemy->paint(p);
-	playerManager->paint(p);
+	player->paint(p);
 }
 
 //void HoppHen::mouseMoveEvent(QMouseEvent* e)

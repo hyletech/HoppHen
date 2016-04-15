@@ -11,7 +11,7 @@
 #include <vector>
 
 #include "defines.h"
-#include "PlayerManager.h"
+#include "Player.h"
 #include "Platform.h"
 #include "Enemy.h"
 
@@ -41,7 +41,7 @@ private:
 	//Object
 	Enemy* enemy;
 	std::vector<Platform*> _platforms;
-	PlayerManager* playerManager;
+	Player* player;
 	QPoint* playerBottom;
 	QMap<int, bool> keys;
 };

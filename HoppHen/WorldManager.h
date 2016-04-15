@@ -13,7 +13,7 @@ public:
 	void initPlatforms();
 	void initEnemies();
 
-
+	Player player;
 	std::list<Platform>& getPlatforms() { return *platforms; }
 	std::list<Enemy>& getEnemies()		{ return *enemies; }
 	float getWorldSpeed()		const { return worldSpeed; }
@@ -21,11 +21,16 @@ public:
 	float getScore()			const { return score; }
 	float getHeight()			const { return height; }
 
+	void Update();
 	void paint(QPainter& painter) const;
 
 private:
 	std::list<Platform> *platforms;
 	std::list<Enemy> *enemies;
+
+	//Boundaries
+	int bottomBoundary;
+	int topBoundary;
 
 	float worldSpeed;
 	float speedDecrease;
