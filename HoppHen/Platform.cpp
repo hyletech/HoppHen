@@ -7,10 +7,10 @@ Platform::Platform(int xPos, int yPos)
 	moving = 0;
 }
 
-void Platform::Update(PlayerManager* playerManager)
+void Platform::Update(Player* player)
 {
-	QPoint pointLeft(playerManager->getRect()->bottomLeft());	// Punkt i nedre vänsterkanten på player
-	QPoint pointRight(playerManager->getRect()->bottomRight());	// Punkt i nedre högerkanten på player
+	QPoint pointLeft(player->getRect()->bottomLeft());	// Punkt i nedre vänsterkanten på player
+	QPoint pointRight(player->getRect()->bottomRight());	// Punkt i nedre högerkanten på player
 
 #if MOVE_WORLD 1 //se i defines.h
 	if (pointLeft.y() <= 400 || pointRight.y() <= 400)
@@ -24,18 +24,18 @@ void Platform::Update(PlayerManager* playerManager)
 
 	if (platformRect->contains(pointLeft) || platformRect->contains(pointRight))
 	{
-		playerManager->getRect()->moveBottom(playerManager->getRect()->bottom() + playerManager->getyvel());
-		if (playerManager->getyvel() >= 0)
-			playerManager->setyvel(playerManager->getyvel() * 1.05);
-		if ((playerManager->getRect()->bottom() > platformRect->top()) && (playerManager->getyvel() >= 0))
+		player->getRect()->moveBottom(player->getRect()->bottom() + player->getyvel());
+		if (player->getyvel() >= 0)
+			player->setyvel(player->getyvel() * 1.05);
+		if ((player->getRect()->bottom() > platformRect->top()) && (player->getyvel() >= 0))
 		{
-			playerManager->getRect()->setBottom(playerManager->getRect()->bottom());
-			playerManager->setyvel(-15);
+			player->getRect()->setBottom(player->getRect()->bottom());
+			player->setyvel(-15);
 		}
-		if (playerManager->getyvel() <= 0)
-			playerManager->setyvel(playerManager->getyvel() * 0.95);
-		if (playerManager->getyvel() > -0.5 && playerManager->getyvel() < 0)
-			playerManager->setyvel(1);
+		if (player->getyvel() <= 0)
+			player->setyvel(player->getyvel() * 0.95);
+		if (player->getyvel() > -0.5 && player->getyvel() < 0)
+			player->setyvel(1);
 	}
 }
 

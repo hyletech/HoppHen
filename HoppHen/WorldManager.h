@@ -13,7 +13,7 @@ public:
 	void initPlatforms();
 	void initEnemies();
 
-	PlayerManager playerManager;
+	Player player;
 	std::list<Platform>& getPlatforms() { return *platforms; }
 	std::list<Enemy>& getEnemies()		{ return *enemies; }
 	float getWorldSpeed()		const { return worldSpeed; }
