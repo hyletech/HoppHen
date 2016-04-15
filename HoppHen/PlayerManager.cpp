@@ -25,12 +25,16 @@ PlayerManager::~PlayerManager()
 
 void PlayerManager::MoveRight()
 {
+	if (playerRect->center().x() > W_WIDTH)
+		playerRect->moveLeft(-P_WIDTH / 2);	
 	if (xVel < maxSpeed)
 		xVel += moveSpeed;
 }
 
 void PlayerManager::MoveLeft()
 {
+	if (playerRect->center().x() < 0)
+		playerRect->moveLeft(W_WIDTH - P_WIDTH / 2);
 	if (xVel > -maxSpeed)
 		xVel -= moveSpeed;
 }
