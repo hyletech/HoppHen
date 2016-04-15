@@ -17,8 +17,9 @@ public:
 	void MoveRight();
 	void MoveLeft();
 
-	float getyvel();
-	void setyvel(float yvel);
+	float getyvel() const  { return _yvel; }
+	void setyvel(float yvel) { _yvel = yvel; }
+
 
 	QRect* getRect() { return playerRect; }
 

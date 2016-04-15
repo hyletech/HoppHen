@@ -54,13 +54,3 @@ void PlayerManager::Update()
  {
 	painter.drawPixmap(playerRect->x(),playerRect->y(),P_WIDTH, P_HEIGHT, *playerTexture);
 }	
-
- float PlayerManager::getyvel()
- {
-	 return _yvel;
- }
-
- void PlayerManager::setyvel(float yvel)
- {
-	 _yvel = yvel;
- }
