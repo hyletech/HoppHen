@@ -42,7 +42,7 @@ void HoppHen::update() //hitcheck
 	//Player movement
 	if (keys[Qt::Key_Right] || keys[Qt::Key_D])
 		playerManager->MoveRight();
-	else if (keys[Qt::Key_Left] || keys[Qt::Key_A])
+	else if(keys[Qt::Key_Left] || keys[Qt::Key_A])
 		playerManager->MoveLeft();
 	else
 		playerManager->MoveDampen();

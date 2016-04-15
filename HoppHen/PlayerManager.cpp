@@ -58,6 +58,7 @@ void PlayerManager::paint(QPainter& painter) const
 {
 #if 1
 	painter.drawPixmap(playerRect->x(), playerRect->y(), P_WIDTH, P_HEIGHT, *playerTexture);
+	painter.drawPixmap(playerRect->x(), playerRect->y(), P_WIDTH, P_HEIGHT, *playerTexture);
 #else
 	QBrush br;
 	br.setColor(Qt::blue);
