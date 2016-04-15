@@ -16,7 +16,7 @@ PlayerManager::PlayerManager()
 	jumpBool = 0; 
 }
 
-
+//Destruktor
 PlayerManager::~PlayerManager()
 {
 	delete playerRect;
@@ -25,43 +25,49 @@ PlayerManager::~PlayerManager()
 
 void PlayerManager::MoveRight()
 {
-	if (playerRect->center().x() > W_WIDTH)
-		playerRect->moveLeft(-P_WIDTH / 2);	
+	//Ökar hastigheten i X
 	if (xVel < maxSpeed)
 		xVel += moveSpeed;
 }
 
 void PlayerManager::MoveLeft()
 {
-	if (playerRect->center().x() < 0)
-		playerRect->moveLeft(W_WIDTH - P_WIDTH / 2);
+	//Minskar hastigheten i X
 	if (xVel > -maxSpeed)
 		xVel -= moveSpeed;
 }
 
 void PlayerManager::MoveDampen()
 {
-	if (xVel < 0)
+	//Stannar spelaren i X-Led
+	if (xVel <= 0)
 		xVel += xDampen;
-	if (xVel > 0)
+	else if (xVel >= 0)
 		xVel -= xDampen;
 }
 
 void PlayerManager::initialize()
 {
+	//Ändrar spelarens startposition
 	playerRect->moveTopLeft(QPoint(P_START_POS_X, P_START_POS_Y));
 }
 
 void PlayerManager::Update()
 {
+	//Uppdaterar spelaren position
 	int newX = playerRect->x() + xVel;
 	playerRect->moveLeft(newX);
+
+	//Teleporterar spelaren om han når kanten av skärmen
+	if (playerRect->center().x() > W_WIDTH)
+		playerRect->moveLeft(-P_WIDTH / 2);
+	else if (playerRect->center().x() < 0)
+		playerRect->moveLeft(W_WIDTH - P_WIDTH / 2);
 }
 
 void PlayerManager::paint(QPainter& painter) const
 {
 #if 1
-	painter.drawPixmap(playerRect->x(), playerRect->y(), P_WIDTH, P_HEIGHT, *playerTexture);
 	painter.drawPixmap(playerRect->x(), playerRect->y(), P_WIDTH, P_HEIGHT, *playerTexture);
 #else
 	QBrush br;
