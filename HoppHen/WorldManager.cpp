@@ -17,6 +17,22 @@ void WorldManager::initPlatforms()
 	}
 }
 
+void WorldManager::initEnemies()
+{
+	//Funkade inte skapa ny enemy?
+	/*
+	for (int i = 0; i < enemieCount; i++)
+	{
+		int xPos = rand() % (W_WIDTH - E_WIDTH) + 1;
+		int yPos = i * enemieYDistance;
+		Enemy* e = new Enemy(xPos, yPos);
+
+		enemies->push_back(*e);
+	}
+	*/
+
+}
+
 void WorldManager::paint(QPainter& painter) const
 {
 	//painter.drawPixmap(playerRect->x(), playerRect->y(), P_WIDTH, P_HEIGHT, *playerTexture);
