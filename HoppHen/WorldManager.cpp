@@ -2,6 +2,7 @@
 
 WorldManager::WorldManager()
 {
+
 	//Boundaries
 	bottomBoundary = W_HEIGHT + 50;
 	topBoundary = -100;
@@ -21,7 +22,10 @@ void WorldManager::initPlatforms()
 
 void WorldManager::Update()
 {
-	if (playerManager.getRect)
+	/*if (playerManager.getYPos >= W_HEIGHT / 2)
+	{
+
+	}*/
 	/*for (int i = 0; i < platforms->size; i++)
 	{
 	if (platforms[i])

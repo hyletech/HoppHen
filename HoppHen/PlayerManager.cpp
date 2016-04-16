@@ -65,9 +65,9 @@ void PlayerManager::Update()
 
 	//PlayerTeleport
 	//Teleporterar spelaren om han når kanten av skärmen
-	if (playerRect->center().x() > W_WIDTH)
+	if (playerRect->left() > W_WIDTH)
 		playerRect->moveLeft(-P_WIDTH / 2);
-	else if (playerRect->center().x() < 0)
+	else if (playerRect->right() < 0)
 		playerRect->moveLeft(W_WIDTH - P_WIDTH / 2);
 
 	playerRect->moveBottom(playerRect->bottom() + _yvel);

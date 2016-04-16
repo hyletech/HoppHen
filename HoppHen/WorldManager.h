@@ -13,7 +13,6 @@ public:
 	void initPlatforms();
 	void initEnemies();
 
-	PlayerManager playerManager;
 	std::list<Platform>& getPlatforms() { return *platforms; }
 	std::list<Enemy>& getEnemies()		{ return *enemies; }
 	float getWorldSpeed()		const { return worldSpeed; }
@@ -27,6 +26,7 @@ public:
 private:
 	std::list<Platform> *platforms;
 	std::list<Enemy> *enemies;
+	PlayerManager playerManager;
 
 	//Boundaries
 	int bottomBoundary;

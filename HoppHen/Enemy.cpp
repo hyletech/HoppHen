@@ -43,10 +43,10 @@ void Enemy::update(float worldSpeed)
 	enemyRect->moveLeft(enemyRect->x() + xVel);
 
 
-#if MOVE_WORLD 1 //se i defines.h
-	if (worldSpeed > 0)
-		enemyRect->moveBottom(enemyRect->bottom() + worldSpeed);
-#endif
+//#if MOVE_WORLD 1 //se i defines.h
+//	if (worldSpeed > 0)
+//		enemyRect->moveBottom(enemyRect->bottom() + worldSpeed);
+//#endif
 }
 
 void Enemy::paint(QPainter& painter) const
