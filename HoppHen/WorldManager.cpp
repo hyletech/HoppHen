@@ -2,10 +2,18 @@
 
 WorldManager::WorldManager()
 {
+	player = new Player();
+
+	//WorldMovement
+	worldSpeed = 0;
 
 	//Boundaries
 	bottomBoundary = W_HEIGHT + 50;
 	topBoundary = -100;
+}
+WorldManager::WorldManager(Player* _player)
+{
+	player = _player;
 }
 
 //Init of platforms
@@ -22,15 +30,7 @@ void WorldManager::initPlatforms()
 
 void WorldManager::Update()
 {
-	/*if (playerManager.getYPos >= W_HEIGHT / 2)
-	{
-
-	}*/
-	//if (player.getRect)
-	/*for (int i = 0; i < platforms->size; i++)
-	{
-	if (platforms[i])
-	}*/
+	worldSpeed = (1/(player->getYPos()) * 5);
 }
 
 void WorldManager::initEnemies()
@@ -46,6 +46,11 @@ void WorldManager::initEnemies()
 		enemies->push_back(*e);
 	}
 	*/
+}
+
+float WorldManager::getWorldSpeed()
+{
+	return worldSpeed;
 }
 
 void WorldManager::paint(QPainter& painter) const

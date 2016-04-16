@@ -42,6 +42,7 @@ private:
 	Enemy* _enemy;
 	std::vector<Platform*> _platforms;
 	Player* _player;
+	WorldManager* _worldManager;
 	QPoint* _playerBottom;
 	QMap<int, bool> _keys;
 

@@ -18,6 +18,8 @@ Player::Player()
 	jumpBool = 0; 
 }
 
+
+
 //Destruktor
 Player::~Player()
 {

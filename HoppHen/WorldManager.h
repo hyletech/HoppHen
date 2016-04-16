@@ -7,17 +7,16 @@ class WorldManager
 {
 public:
 	WorldManager();
+	WorldManager(Player* _player);
 	~WorldManager();
-	
+
 	void changeSpeed(int speed) { worldSpeed = speed; }
 	void initPlatforms();
 	void initEnemies();
 
-	Player player;
-
 	std::list<Platform>& getPlatforms() { return *platforms; }
 	std::list<Enemy>& getEnemies()		{ return *enemies; }
-	float getWorldSpeed()		const { return worldSpeed; }
+	float getWorldSpeed();
 	float getSpeedDecrease()	const { return speedDecrease; }
 	float getScore()			const { return score; }
 	float getHeight()			const { return height; }
@@ -28,7 +27,8 @@ public:
 private:
 	std::list<Platform> *platforms;
 	std::list<Enemy> *enemies;
-	//PlayerManager playerManager;
+
+	Player* player;
 
 	//Boundaries
 	int bottomBoundary;

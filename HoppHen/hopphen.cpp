@@ -8,15 +8,12 @@ HoppHen::HoppHen(QWidget *parent)
 	_player = new Player();
 	_enemy = new Enemy();
 	_playerBottom = new QPoint();
+	_worldManager = new WorldManager();
 
-#if MOVE_WORLD 1
-	_worldSpeed = 2;
-#else
-	_worldSpeed = 0;
-#endif
 	_moveWorld = false;
 	initPlatforms();
 
+	_worldSpeed = 0;
 
 	//Window
 	setFixedWidth(W_WIDTH);	
@@ -42,6 +39,24 @@ void HoppHen::update() //hitcheck
 {
 	srand(time(NULL));
 
+	//Updates
+	_enemy->update();
+	_player->Update();
+	_worldManager->Update();
+
+	//Gets worldSpeed
+	_worldSpeed = _worldManager->getWorldSpeed();
+
+	//_moveWorld = _player->getRect()->y() <= W_HEIGHT / 2; //flytta världen om player är över en viss y-position
+
+	//Uppdatera plattformerna, samt hitcheck med spelare och plattform
+	for (int i = 0; i < _platforms.size(); i++)
+	{
+		_platforms[i]->startMove(_worldSpeed);
+		_platforms[i]->Update(_player);
+	}
+	_enemy->startMove(_worldSpeed);
+
 	//KeyInput
 	//Player movement
 	if (_keys[Qt::Key_Right] || _keys[Qt::Key_D])
@@ -56,27 +71,7 @@ void HoppHen::update() //hitcheck
 		close();
 
 
-	_moveWorld = _player->getRect()->y() <= W_HEIGHT / 2; //flytta världen om player är över en viss y-position
 
-	//Uppdatera plattformerna, samt hitcheck med spelare och plattform
-	for (int i = 0; i < _platforms.size(); i++)
-	{
-		if (_moveWorld)
-			_platforms[i]->startMove(_worldSpeed);
-		else 
-			_platforms[i]->stopMove();
-
-		
-		_platforms[i]->Update(_player);
-	}
-
-	if (_moveWorld)
-		_enemy->startMove(_worldSpeed);
-	else
-		_enemy->stopMove();
-
-	_enemy->update();
-	_player->Update();
 
 	repaint();
 }
