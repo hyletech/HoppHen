@@ -11,9 +11,17 @@ WorldManager::WorldManager()
 	bottomBoundary = W_HEIGHT + 50;
 	topBoundary = -100;
 }
-WorldManager::WorldManager(Player* _player)
+WorldManager::WorldManager(Player* _player, Enemy* _enemy)
 {
 	player = _player;
+	enemy = _enemy;
+	//WorldMovement
+	worldSpeed = 0;
+
+	//Boundaries
+	bottomBoundary = W_HEIGHT + 50;
+	topBoundary = -100;
+
 }
 
 //Init of platforms
@@ -30,6 +38,9 @@ void WorldManager::initPlatforms()
 
 void WorldManager::Update()
 {
+	enemy->update();
+	player->Update();
+
 //	worldSpeed = (1/(player->getYPos()) * 5);
 }
 

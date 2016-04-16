@@ -8,7 +8,7 @@ HoppHen::HoppHen(QWidget *parent)
 	_player = new Player();
 	_enemy = new Enemy();
 	_playerBottom = new QPoint();
-	_worldManager = new WorldManager();
+	_worldManager = new WorldManager(_player, _enemy);
 
 	_moveWorld = false;
 	initPlatforms();
@@ -40,8 +40,6 @@ void HoppHen::update() //hitcheck
 	srand(time(NULL));
 
 	//Updates
-	_enemy->update();
-	_player->Update();
 	_worldManager->Update();
 
 	//Gets worldSpeed

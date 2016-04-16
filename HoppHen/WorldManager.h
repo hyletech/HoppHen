@@ -7,7 +7,7 @@ class WorldManager
 {
 public:
 	WorldManager();
-	WorldManager(Player* _player);
+	WorldManager(Player* _player, Enemy* _enemy);
 	~WorldManager();
 
 	void changeSpeed(int speed) { worldSpeed = speed; }
@@ -28,6 +28,7 @@ private:
 	std::list<Platform> *platforms;
 	std::list<Enemy> *enemies;
 
+	Enemy* enemy;
 	Player* player;
 
 	//Boundaries
