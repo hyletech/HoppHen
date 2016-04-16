@@ -4,11 +4,11 @@
 #include <QPainter>
 
 #pragma once
-class PlayerManager
+class Player
 {
 public:
-	PlayerManager();
-	~PlayerManager();
+	Player();
+	~Player();
 
 
 	void initialize();

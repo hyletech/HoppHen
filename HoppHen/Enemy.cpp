@@ -2,9 +2,10 @@
 
 Enemy::Enemy()
 {
-	enemyTexture = new QPixmap(""); //Fixa bild
+	enemyTexture = new QPixmap("monster1.png"); //Fixa bild
 	enemyRect = new QRect(E_START_POS_X, E_START_POS_Y, E_WIDTH, E_HEIGHT);
 
+	_yvel = 0;
 	xVel = 5;
 	moveSpeed = 0.2;
 	maxSpeed = 5;
@@ -13,7 +14,6 @@ Enemy::Enemy()
 
 Enemy::Enemy(int xPos, int yPos)
 {
-	enemyTexture = new QPixmap(""); //Fixa bild
 	enemyRect = new QRect(xPos, yPos, E_WIDTH, E_HEIGHT);
 
 	xVel = 5;
@@ -33,7 +33,7 @@ void Enemy::initialize()
 
 }
 
-void Enemy::update(float worldSpeed)
+void Enemy::update()
 {
 	if (enemyRect->right() > W_WIDTH - E_PADDING && xVel > 0)
 		xVel *= -1;
@@ -42,6 +42,7 @@ void Enemy::update(float worldSpeed)
 
 	enemyRect->moveLeft(enemyRect->x() + xVel);
 
+	enemyRect->moveBottom(enemyRect->bottom() + _yvel);
 
 //#if MOVE_WORLD 1 //se i defines.h
 //	if (worldSpeed > 0)
@@ -49,35 +50,14 @@ void Enemy::update(float worldSpeed)
 //#endif
 }
 
+
 void Enemy::paint(QPainter& painter) const
 {
 	QBrush br;
 	br.setColor(Qt::blue);
 	painter.setBrush(br);
-	painter.drawRect(enemyRect->x(), enemyRect->y(), E_WIDTH, E_HEIGHT);
+	//painter.drawRect(enemyRect->x(), enemyRect->y(), E_WIDTH, E_HEIGHT);
+	painter.drawPixmap(enemyRect->x(), enemyRect->y(), E_WIDTH, E_HEIGHT, *enemyTexture);
+
 }
 
-void Enemy::MoveRight()
-{
-	//Ökar hastigheten i X
-	if (xVel < maxSpeed)
-		xVel += moveSpeed;
-}
-
-void Enemy::MoveLeft()
-{
-	//Minskar hastigheten i X
-	if (xVel > -maxSpeed)
-		xVel -= moveSpeed;
-}
-
-void Enemy::MoveDampen()
-{
-	//Stannar spelaren i X-Led
-	if (xVel <= 0)
-		xVel += xDampen;
-	else if (xVel >= 0)
-		xVel -= xDampen;
-	if (xVel < P_DAMP_INTERVAL && xVel > -P_DAMP_INTERVAL)
-		xVel = 0;
-}

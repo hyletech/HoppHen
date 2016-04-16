@@ -26,6 +26,7 @@ void WorldManager::Update()
 	{
 
 	}*/
+	//if (player.getRect)
 	/*for (int i = 0; i < platforms->size; i++)
 	{
 	if (platforms[i])

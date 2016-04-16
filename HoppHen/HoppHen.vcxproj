@@ -92,7 +92,8 @@
     <ClCompile Include="hopphen.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Platform.cpp" />
-    <ClCompile Include="PlayerManager.cpp" />
+    <ClCompile Include="PlatformBreakable.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="WorldManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -124,7 +125,9 @@
     <ClInclude Include="GeneratedFiles\ui_hopphen.h" />
     <ClInclude Include="defines.h" />
     <ClInclude Include="Platform.h" />
-    <ClInclude Include="PlayerManager.h" />
+    <ClInclude Include="PlatformBreakable.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="WorldManager.h" />
   </ItemGroup>
   <ItemGroup>
@@ -140,8 +143,14 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\..\Desktop\monster1.png" />
     <Image Include="..\..\..\..\GitHub\HoppHen\Eivind.png" />
     <Image Include="..\..\..\..\Visual Studio 2015\Projects\SpelProjekt\SpelProjekt\SpelProjektContent\Images\BackGround.png" />
+    <Image Include="bitmap1.bmp" />
+    <Image Include="monster-clip-art-flying-monster-clipart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="HoppHen.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
