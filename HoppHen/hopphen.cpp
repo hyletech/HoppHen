@@ -75,7 +75,7 @@ void HoppHen::update() //hitcheck
 	else
 		_enemy->stopMove();
 
-	_enemy->update();
+	_enemy->update(_player);
 	_player->Update();
 
 	repaint();

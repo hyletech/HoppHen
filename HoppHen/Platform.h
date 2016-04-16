@@ -17,6 +17,7 @@ public:
 
 	void startMove(float vel) { _yvel = vel; }
 	void stopMove() { _yvel = 0; }
+	virtual void giveEffect(){}
 
 protected:
 	QPixmap* platformTexture;

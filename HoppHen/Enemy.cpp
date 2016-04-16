@@ -33,7 +33,7 @@ void Enemy::initialize()
 
 }
 
-void Enemy::update()
+void Enemy::update(Player* player)
 {
 	if (enemyRect->right() > W_WIDTH - E_PADDING && xVel > 0)
 		xVel *= -1;
@@ -43,6 +43,15 @@ void Enemy::update()
 	enemyRect->moveLeft(enemyRect->x() + xVel);
 
 	enemyRect->moveBottom(enemyRect->bottom() + _yvel);
+
+	//Om player/enemy-kollision
+	if (enemyRect->contains(player->getRect()->bottomLeft()) || enemyRect->contains(player->getRect()->bottomRight()) || enemyRect->contains(player->getRect()->topLeft()) || enemyRect->contains(player->getRect()->topRight()))
+	{
+		player->setyvel(5);
+
+	}
+
+
 
 }
 

@@ -2,6 +2,7 @@
 #include <qrect.h>
 #include "defines.h"
 #include <QPainter>
+#include "Player.h"
 
 
 class Enemy
@@ -13,7 +14,7 @@ public:
 
 
 	void initialize();
-	void update();
+	void update(Player* player);
 	void paint(QPainter& painter) const;
 
 	void startMove(float vel) { _yvel = vel; }
