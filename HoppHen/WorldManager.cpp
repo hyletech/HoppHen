@@ -1,9 +1,11 @@
 #include "WorldManager.h"
+#include <math.h>
 
 WorldManager::WorldManager()
 {
 	player = new Player();
-
+	enemy = new Enemy();
+	
 	//WorldMovement
 	worldSpeed = 0;
 
@@ -21,7 +23,6 @@ WorldManager::WorldManager(Player* _player, Enemy* _enemy)
 	//Boundaries
 	bottomBoundary = W_HEIGHT + 50;
 	topBoundary = -100;
-
 }
 
 //Init of platforms
@@ -41,7 +42,12 @@ void WorldManager::Update()
 	enemy->update();
 	player->Update();
 
-//	worldSpeed = (1/(player->getYPos()) * 5);
+	if (player->getYPos() > 0)
+	{
+		//worldSpeed = (1/(player->getYPos()) * 5);
+		worldSpeed = -(player->getYPos()*2)*0.005;
+	}
+	worldSpeed = -worldSpeed;
 }
 
 void WorldManager::initEnemies()

@@ -4,7 +4,6 @@ Enemy::Enemy()
 {
 	enemyTexture = new QPixmap("monster1.png"); //Fixa bild
 	enemyRect = new QRect(E_START_POS_X, E_START_POS_Y, E_WIDTH, E_HEIGHT);
-	player = new Player;
 	_yvel = 0;
 	xVel = 5;
 	moveSpeed = 0.2;
@@ -50,11 +49,11 @@ void Enemy::update()
 //		enemyRect->moveBottom(enemyRect->bottom() + worldSpeed);
 //#endif
 	//Om player/enemy-kollision
-	if (enemyRect->contains(player->getRect()->bottomLeft()) || enemyRect->contains(player->getRect()->bottomRight()) || enemyRect->contains(player->getRect()->topLeft()) || enemyRect->contains(player->getRect()->topRight()))
+	/*if (enemyRect->contains(player->getRect()->bottomLeft()) || enemyRect->contains(player->getRect()->bottomRight()) || enemyRect->contains(player->getRect()->topLeft()) || enemyRect->contains(player->getRect()->topRight()))
 	{
-		player->setyvel(5);
+		player->setyvel(-100);
 
-	}
+	}*/
 }
 
 

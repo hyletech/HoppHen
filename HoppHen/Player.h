@@ -24,7 +24,7 @@ public:
 	void setyvel(float yvel) { _yvel = yvel; }
 
 	int getYPos(){ return playerRect->y(); }
-	QRect* getRect() { return playerRect; }
+	QRect* getRect() { return playerRect; }		
 
 
 private:
