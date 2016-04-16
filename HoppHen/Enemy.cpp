@@ -12,9 +12,9 @@ Enemy::Enemy()
 	xDampen = 0.2;
 }
 
-Enemy::Enemy(int xPos, int yPos, Player* _player)
+Enemy::Enemy(Player* _player)
 {
-	enemyRect = new QRect(xPos, yPos, E_WIDTH, E_HEIGHT);
+	//enemyRect = new QRect(xPos, yPos, E_WIDTH, E_HEIGHT);
 	player = _player;
 
 	xVel = 5;

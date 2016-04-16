@@ -9,7 +9,7 @@ class Enemy
 {
 public:
 	Enemy();
-	Enemy(int xPos, int yPos, Player* _player);
+	Enemy(Player* _player);
 	~Enemy();
 
 

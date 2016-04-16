@@ -30,7 +30,7 @@ void WorldManager::initPlatforms()
 
 void WorldManager::Update()
 {
-	worldSpeed = (1/(player->getYPos()) * 5);
+//	worldSpeed = (1/(player->getYPos()) * 5);
 }
 
 void WorldManager::initEnemies()

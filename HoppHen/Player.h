@@ -30,7 +30,6 @@ public:
 private:
 	QPixmap* playerTexture;
 	QRect* playerRect;
-	QRect* playerRect1;
 	float _yvel;
 
 	double xVel;	//Velocity of player
