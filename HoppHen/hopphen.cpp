@@ -70,9 +70,6 @@ void HoppHen::update() //hitcheck
 	if (_keys[Qt::Key_Escape]) 
 		close();
 
-
-
-
 	repaint();
 }
 

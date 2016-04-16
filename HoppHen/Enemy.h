@@ -2,13 +2,14 @@
 #include <qrect.h>
 #include "defines.h"
 #include <QPainter>
+#include "Player.h"
 
 
 class Enemy
 {
 public:
 	Enemy();
-	Enemy(int xPos, int yPos);
+	Enemy(int xPos, int yPos, Player* _player);
 	~Enemy();
 
 
@@ -25,6 +26,7 @@ public:
 private:
 	QPixmap* enemyTexture;
 	QRect* enemyRect;
+	Player* player;
 
 	float _yvel;
 	float xVel;

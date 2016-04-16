@@ -1,12 +1,18 @@
+#pragma once
+#include <qpainter.h>
+#include "defines.h"
 #include "Platform.h"
 
 class PlatformBreakable : public Platform
 {
 	public:
 	
-		PlatformBreakable::PlatformBreakable();
+		PlatformBreakable(int xPos, int Ypos, Platform *platform);
+		~PlatformBreakable(){}
 
+		void paint(QPainter & painter);
+		void disappearEffect();
 
-	private:
-
+private:
+		Platform* _platform;
 };
