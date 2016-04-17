@@ -115,6 +115,9 @@
     <Image Include="..\..\..\..\Desktop\monster1.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="..\..\..\..\Pictures\Dirt.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="HoppHen.rc" />

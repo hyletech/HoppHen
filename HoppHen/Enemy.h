@@ -9,12 +9,12 @@ class Enemy
 {
 public:
 	Enemy();
-	Enemy(Player* _player);
+	Enemy(int xPos, int yPos);
 	~Enemy();
 
 
 	void initialize();
-	void update();
+	void update(Player* _player);
 	void paint(QPainter& painter) const;
 
 	void startMove(float vel) { _yvel = vel; }
@@ -26,7 +26,6 @@ public:
 private:
 	QPixmap* enemyTexture;
 	QRect* enemyRect;
-	Player* player;
 
 	float _yvel;
 	float xVel;

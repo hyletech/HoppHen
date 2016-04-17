@@ -28,4 +28,10 @@
 #define BG_MINPOS		-1200	
 #define BG_MAXPOS		0
 
+//Ground
+#define GROUND_WIDTH	W_WIDTH
+#define GROUND_HEIGHT	800
+#define GROUND_START_Y	350
+#define GROUND_START_X	0
+
 #define MOVE_WORLD		1

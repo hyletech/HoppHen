@@ -145,6 +145,7 @@
   <ItemGroup>
     <Image Include="..\..\..\..\Desktop\monster1.png" />
     <Image Include="..\..\..\..\GitHub\HoppHen\Eivind.png" />
+    <Image Include="..\..\..\..\Pictures\Dirt.png" />
     <Image Include="..\..\..\..\Visual Studio 2015\Projects\SpelProjekt\SpelProjekt\SpelProjektContent\Images\BackGround.png" />
     <Image Include="bitmap1.bmp" />
     <Image Include="monster-clip-art-flying-monster-clipart.png" />

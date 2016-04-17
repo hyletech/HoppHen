@@ -40,7 +40,7 @@ void HoppHen::update() //hitcheck
 	srand(time(NULL));
 
 	//Updates
-	_worldManager->Update();
+	_worldManager->Update(_player);
 
 	//Gets worldSpeed
 	_worldSpeed = _worldManager->getWorldSpeed();
@@ -82,6 +82,7 @@ void HoppHen::paintEvent(QPaintEvent * e)
 	for (int i = 0; i < _platforms.size(); i++)
 		_platforms[i]->paint(p);
 
+	_worldManager->paint(p);
 	_enemy->paint(p);
 	_player->paint(p);
 }

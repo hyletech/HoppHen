@@ -11,10 +11,9 @@ Enemy::Enemy()
 	xDampen = 0.2;
 }
 
-Enemy::Enemy(Player* _player)
+Enemy::Enemy(int xPos, int yPos)
 {
-	//enemyRect = new QRect(xPos, yPos, E_WIDTH, E_HEIGHT);
-	player = _player;
+	enemyRect = new QRect(xPos, yPos, E_WIDTH, E_HEIGHT);
 
 	xVel = 5;
 	moveSpeed = 0.2;
@@ -33,7 +32,7 @@ void Enemy::initialize()
 
 }
 
-void Enemy::update()
+void Enemy::update(Player* _player)
 {
 	if (enemyRect->right() > W_WIDTH - E_PADDING && xVel > 0)
 		xVel *= -1;
@@ -44,16 +43,11 @@ void Enemy::update()
 
 	enemyRect->moveBottom(enemyRect->bottom() + _yvel);
 
-//#if MOVE_WORLD 1 //se i defines.h
-//	if (worldSpeed > 0)
-//		enemyRect->moveBottom(enemyRect->bottom() + worldSpeed);
-//#endif
 	//Om player/enemy-kollision
-	/*if (enemyRect->contains(player->getRect()->bottomLeft()) || enemyRect->contains(player->getRect()->bottomRight()) || enemyRect->contains(player->getRect()->topLeft()) || enemyRect->contains(player->getRect()->topRight()))
+	if (enemyRect->contains(_player->getXPos(), _player->getYPos()))
 	{
-		player->setyvel(-100);
-
-	}*/
+		_player->setyvel(-100);
+	}
 }
 
 

@@ -21,12 +21,16 @@ public:
 	float getScore()			const { return score; }
 	float getHeight()			const { return height; }
 
-	void Update();
+	void Update(Player* _player);
 	void paint(QPainter& painter) const;
 
 private:
 	std::list<Platform> *platforms;
 	std::list<Enemy> *enemies;
+
+	//Ground
+	//QRect* groundRect;
+	QPixmap* groundTexture;
 
 	Enemy* enemy;
 	Player* player;

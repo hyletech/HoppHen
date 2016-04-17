@@ -6,6 +6,9 @@ WorldManager::WorldManager()
 	player = new Player();
 	enemy = new Enemy();
 	
+	groundTexture = new QPixmap("Dirt.png");
+
+
 	//WorldMovement
 	worldSpeed = 0;
 
@@ -15,6 +18,9 @@ WorldManager::WorldManager()
 }
 WorldManager::WorldManager(Player* _player, Enemy* _enemy)
 {
+	//Ground
+	//groundRect = new QRect(xPos, yPos, GROUND_WIDTH, GROUND_HEIGHT);
+
 	player = _player;
 	enemy = _enemy;
 	//WorldMovement
@@ -37,19 +43,19 @@ void WorldManager::initPlatforms()
 	}
 }
 
-void WorldManager::Update()
+void WorldManager::Update(Player* _player)
 {
-	enemy->update();
+	enemy->update(_player);
 	player->Update();
 
 	if (player->getYPos() > 0)
 	{
-		/*float p = (player->getYPos() * 0.08);
-		worldSpeed = (1/p+1)*2;*/
-		//worldSpeed = (player->getYPos()*2)*0.005;
-		//worldSpeed = (2 - (player->getYPos() * 2)* 0.008);
-		//worldSpeed = 0.0016*(player->getYPos() - 5);
+		worldSpeed = -((player->getYPos()-W_HEIGHT)*2)*0.003;
 	}
+	/*if (player->getYPos < groundRect->getRect.top())
+	{
+
+	}*/
 }
 
 void WorldManager::initEnemies()
@@ -74,5 +80,5 @@ float WorldManager::getWorldSpeed()
 
 void WorldManager::paint(QPainter& painter) const
 {
-	//painter.drawPixmap(playerRect->x(), playerRect->y(), P_WIDTH, P_HEIGHT, *playerTexture);
+	//painter.drawPixmap(groundRect->x(), groundRect->y(), GROUND_WIDTH, GROUND_HEIGHT, *groundTexture);
 }
