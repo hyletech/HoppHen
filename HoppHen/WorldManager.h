@@ -6,7 +6,6 @@
 class WorldManager
 {
 public:
-	WorldManager();
 	WorldManager(Player* _player, Enemy* _enemy);
 	~WorldManager();
 
@@ -27,9 +26,10 @@ public:
 private:
 	std::list<Platform> *platforms;
 	std::list<Enemy> *enemies;
+	std::vector<Platform*> _platforms;
 
 	//Ground
-	//QRect* groundRect;
+	QRect* groundRect;
 	QPixmap* groundTexture;
 
 	Enemy* enemy;

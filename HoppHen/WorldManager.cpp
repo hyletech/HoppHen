@@ -1,25 +1,17 @@
 #include "WorldManager.h"
 #include <math.h>
 
-WorldManager::WorldManager()
-{
-	player = new Player();
-	enemy = new Enemy();
-	
-	groundTexture = new QPixmap("Dirt.png");
-
-
-	//WorldMovement
-	worldSpeed = 0;
-
-	//Boundaries
-	bottomBoundary = W_HEIGHT + 50;
-	topBoundary = -100;
-}
 WorldManager::WorldManager(Player* _player, Enemy* _enemy)
 {
 	//Ground
-	//groundRect = new QRect(xPos, yPos, GROUND_WIDTH, GROUND_HEIGHT);
+	groundRect = new QRect(GROUND_START_X, GROUND_START_Y, GROUND_WIDTH, GROUND_HEIGHT);
+
+	initPlatforms();
+
+	player = new Player();
+	enemy = new Enemy();
+
+	groundTexture = new QPixmap("Dirt.png");
 
 	player = _player;
 	enemy = _enemy;
@@ -31,17 +23,17 @@ WorldManager::WorldManager(Player* _player, Enemy* _enemy)
 	topBoundary = -100;
 }
 
-//Init of platforms
-void WorldManager::initPlatforms()
-{
-	for (int i = 0; i < platFormCount; i++)
-	{
-		int xPos = rand() % (W_WIDTH - PF_WIDTH) + 1; 
-		int yPos = i * platformYDistance;
-		Platform* p = new Platform(xPos, yPos);
-		platforms->push_back(*p);
-	}
-}
+////Init of platforms
+//void WorldManager::initPlatforms()
+//{
+//	for (int i = 0; i < platFormCount; i++)
+//	{
+//		int xPos = rand() % (W_WIDTH - PF_WIDTH) + 1; 
+//		int yPos = i * platformYDistance;
+//		Platform* p = new Platform(xPos, yPos);
+//		platforms->push_back(*p);
+//	}
+//}
 
 void WorldManager::Update(Player* _player)
 {
@@ -52,33 +44,60 @@ void WorldManager::Update(Player* _player)
 	{
 		worldSpeed = -((player->getYPos()-W_HEIGHT)*2)*0.003;
 	}
+
+	//Uppdatera plattformerna, samt hitcheck med spelare och plattform
+	for (int i = 0; i < _platforms.size(); i++)
+	{
+		_platforms[i]->startMove(worldSpeed);
+		_platforms[i]->Update(_player);
+	}
+	enemy->startMove(worldSpeed);
+
 	/*if (player->getYPos < groundRect->getRect.top())
 	{
 
 	}*/
 }
 
-void WorldManager::initEnemies()
+void WorldManager::initPlatforms()
 {
-	//Funkade inte skapa ny enemy?
-	/*
-	for (int i = 0; i < enemieCount; i++)
+#if 0 
+	int spaceX = 0;
+	int spaceY = 50;
+	if (_platforms.size() == 0)
 	{
-		int xPos = rand() % (W_WIDTH - E_WIDTH) + 1;
-		int yPos = i * enemieYDistance;
-		Enemy* e = new Enemy(xPos, yPos);
-
-		enemies->push_back(*e);
+		for (int x = 0; x < 25; x++)
+		{
+			Platform* n = new Platform(spaceX, spaceY);
+			_platforms.push_back(n);
+			spaceX += 25;
+			spaceY += 120;
+		}
 	}
-	*/
+#else
+	//Random i x-led
+	if (_platforms.size() == 0)
+	{
+		for (int i = 0; i < 20; i++)
+		{
+			int xPos = rand() % (W_WIDTH - PF_WIDTH - E_PADDING) + 1;
+			int yPos = W_HEIGHT - (i * 100) - 200;
+			Platform* p = new Platform(xPos, yPos);
+			_platforms.push_back(p);
+		}
+	}
+#endif
 }
 
-float WorldManager::getWorldSpeed()
-{
-	return worldSpeed;
-}
 
 void WorldManager::paint(QPainter& painter) const
 {
 	//painter.drawPixmap(groundRect->x(), groundRect->y(), GROUND_WIDTH, GROUND_HEIGHT, *groundTexture);
+	
+	enemy->paint(painter);
+
+	//Plattformer
+	for (int i = 0; i < _platforms.size(); i++)
+		_platforms[i]->paint(painter);
+
 }

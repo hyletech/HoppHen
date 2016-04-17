@@ -28,7 +28,6 @@ public:
 	void keyPressEvent(QKeyEvent* e);
 	void keyReleaseEvent(QKeyEvent *e);
 
-	void initPlatforms();
 
 private slots:
 	void update();
@@ -40,7 +39,6 @@ private:
 
 	//Object
 	Enemy* _enemy;
-	std::vector<Platform*> _platforms;
 	Player* _player;
 	WorldManager* _worldManager;
 	QPoint* _playerBottom;
