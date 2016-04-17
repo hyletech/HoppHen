@@ -7,8 +7,9 @@ HoppHen::HoppHen(QWidget *parent)
 
 	_player = new Player();
 	_enemy = new Enemy();
-	_playerBottom = new QPoint();
-	_worldManager = new WorldManager(_player, _enemy);
+	_ground = new Ground();
+
+	_worldManager = new WorldManager(_player, _enemy, _ground);
 
 
 	//Window

@@ -12,14 +12,12 @@ public:
 	Enemy(int xPos, int yPos);
 	~Enemy();
 
-
 	void initialize();
 	void update(Player* _player);
 	void paint(QPainter& painter) const;
 
 	void startMove(float vel) { _yvel = vel; }
 	void stopMove() { _yvel = 0; }
-
 
 	QRect* getRect() { return enemyRect; }
 

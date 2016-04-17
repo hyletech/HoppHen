@@ -10,6 +10,7 @@
 #include <ctime>
 #include <vector>
 
+#include "Ground.h"
 #include "defines.h"
 #include "Player.h"
 #include "Platform.h"
@@ -38,6 +39,7 @@ private:
 	QPixmap* _background;
 
 	//Object
+	Ground* _ground;
 	Enemy* _enemy;
 	Player* _player;
 	WorldManager* _worldManager;

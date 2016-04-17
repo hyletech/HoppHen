@@ -89,6 +89,7 @@
     <ClCompile Include="GeneratedFiles\Release\moc_hopphen.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Ground.cpp" />
     <ClCompile Include="hopphen.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Platform.cpp" />
@@ -124,6 +125,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GeneratedFiles\ui_hopphen.h" />
     <ClInclude Include="defines.h" />
+    <ClInclude Include="Ground.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="PlatformBreakable.h" />
     <ClInclude Include="Player.h" />

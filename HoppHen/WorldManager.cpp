@@ -1,17 +1,15 @@
 #include "WorldManager.h"
 #include <math.h>
 
-WorldManager::WorldManager(Player* _player, Enemy* _enemy)
+WorldManager::WorldManager(Player* _player, Enemy* _enemy, Ground* _ground)
 {
-	//Ground
-	groundRect = new QRect(GROUND_START_X, GROUND_START_Y, GROUND_WIDTH, GROUND_HEIGHT);
 
 	initPlatforms();
 
-	player = new Player();
-	enemy = new Enemy();
+	player = _player;
+	enemy = _enemy;
+	ground = _ground;
 
-	groundTexture = new QPixmap("Dirt.png");
 
 	player = _player;
 	enemy = _enemy;
@@ -39,6 +37,7 @@ void WorldManager::Update(Player* _player)
 {
 	enemy->update(_player);
 	player->Update();
+	ground->Update();
 
 	if (player->getYPos() > 0)
 	{
@@ -51,7 +50,12 @@ void WorldManager::Update(Player* _player)
 		_platforms[i]->startMove(worldSpeed);
 		_platforms[i]->Update(_player);
 	}
+
+	//Flytta fiender
 	enemy->startMove(worldSpeed);
+
+	//Flytta mark
+	ground->startMove(worldSpeed);
 
 	/*if (player->getYPos < groundRect->getRect.top())
 	{
@@ -92,8 +96,10 @@ void WorldManager::initPlatforms()
 
 void WorldManager::paint(QPainter& painter) const
 {
-	//painter.drawPixmap(groundRect->x(), groundRect->y(), GROUND_WIDTH, GROUND_HEIGHT, *groundTexture);
-	
+	//Mark
+	ground->paint(painter);
+
+	//Fiender
 	enemy->paint(painter);
 
 	//Plattformer

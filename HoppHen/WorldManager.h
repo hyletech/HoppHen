@@ -1,12 +1,13 @@
 #pragma once
 #include "Platform.h"
 #include "Enemy.h"
+#include "Ground.h"
 #include <math.h>
 
 class WorldManager
 {
 public:
-	WorldManager(Player* _player, Enemy* _enemy);
+	WorldManager(Player* _player, Enemy* _enemy, Ground* _ground);
 	~WorldManager();
 
 	void changeSpeed(int speed) { worldSpeed = speed; }
@@ -28,10 +29,7 @@ private:
 	std::list<Enemy> *enemies;
 	std::vector<Platform*> _platforms;
 
-	//Ground
-	QRect* groundRect;
-	QPixmap* groundTexture;
-
+	Ground* ground;
 	Enemy* enemy;
 	Player* player;
 
