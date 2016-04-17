@@ -44,10 +44,12 @@ void WorldManager::Update()
 
 	if (player->getYPos() > 0)
 	{
-		//worldSpeed = (1/(player->getYPos()) * 5);
-		worldSpeed = -(player->getYPos()*2)*0.005;
+		/*float p = (player->getYPos() * 0.08);
+		worldSpeed = (1/p+1)*2;*/
+		//worldSpeed = (player->getYPos()*2)*0.005;
+		//worldSpeed = (2 - (player->getYPos() * 2)* 0.008);
+		//worldSpeed = 0.0016*(player->getYPos() - 5);
 	}
-	worldSpeed = -worldSpeed;
 }
 
 void WorldManager::initEnemies()
