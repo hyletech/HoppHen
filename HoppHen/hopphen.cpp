@@ -7,11 +7,9 @@ HoppHen::HoppHen(QWidget *parent)
 	ui.setupUi(this);
 
 	_player = new Player();
-	_enemy = new Enemy();
-	_ground = new Ground();
 	
 	_scoreManager = new ScoreManager();
-	_worldManager = new WorldManager(_player, _enemy, _ground);
+	_worldManager = new WorldManager(_player);
 
 	introTime = 20000;
 
@@ -53,7 +51,7 @@ void HoppHen::update() //hitcheck
 		//Game
 	case Game:
 		//Updates
-		_worldManager->Update(_player);
+		_worldManager->Update();
 
 		//_moveWorld = _player->getRect()->y() <= W_HEIGHT / 2; //flytta världen om player är över en viss y-position
 
@@ -128,8 +126,6 @@ void HoppHen::paintEvent(QPaintEvent * e)
 		p.drawPixmap(0, _bgYPos, *_background);
 
 		_worldManager->paint(p);
-		_enemy->paint(p);
-		_player->paint(p);
 		break;
 
 	case Lose:

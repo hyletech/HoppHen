@@ -31,8 +31,6 @@ private:
 	GameState gameState;
 
 	//Object
-	Ground* _ground;
-	Enemy* _enemy;
 	Player* _player;
 	WorldManager* _worldManager;
 	ScoreManager* _scoreManager;

@@ -1,23 +1,19 @@
 #include "WorldManager.h"
 #include <math.h>
 
-WorldManager::WorldManager(Player* _player, Enemy* _enemy, Ground* _ground)
+WorldManager::WorldManager(Player* _player)
 {
-
 	initPlatforms();
 
 	player = _player;
-	enemy = _enemy;
-	ground = _ground;
+	ground = new Ground();
+	enemy = new Enemy(_player);
 
-
-	player = _player;
-	enemy = _enemy;
 	//WorldMovement
 	worldSpeed = 0;
 
 	//Boundaries
-	bottomBoundary = W_HEIGHT + 50;
+	bottomBoundary = W_HEIGHT + 100;
 	topBoundary = -100;
 }
 
@@ -33,11 +29,11 @@ WorldManager::WorldManager(Player* _player, Enemy* _enemy, Ground* _ground)
 //	}
 //}
 
-void WorldManager::Update(Player* _player)
+void WorldManager::Update()
 {
-	enemy->update(_player);
+	enemy->update();
 	player->Update();
-	ground->Update(_player);
+	ground->Update(player);
 
 	if (player->getYPos() > bottomBoundary)
 	{
@@ -54,7 +50,7 @@ void WorldManager::Update(Player* _player)
 	for (int i = 0; i < _platforms.size(); i++)
 	{
 		_platforms[i]->startMove(worldSpeed);
-		_platforms[i]->Update(_player);
+		_platforms[i]->Update(player);
 	}
 
 	//Flytta fiender
@@ -105,11 +101,14 @@ void WorldManager::paint(QPainter& painter) const
 	//Mark
 	ground->paint(painter);
 
-	//Fiender
-	enemy->paint(painter);
 
 	//Plattformer
 	for (int i = 0; i < _platforms.size(); i++)
 		_platforms[i]->paint(painter);
+
+	//Fiender
+	enemy->paint(painter);
+
+	player->paint(painter);
 
 }

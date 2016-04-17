@@ -7,7 +7,7 @@
 class WorldManager
 {
 public:
-	WorldManager(Player* _player, Enemy* _enemy, Ground* _ground);
+	WorldManager(Player* _player);
 	~WorldManager();
 
 	void changeSpeed(int speed) { worldSpeed = speed; }
@@ -21,7 +21,7 @@ public:
 	float getScore()			const { return score; }
 	float getHeight()			const { return height; }
 
-	void Update(Player* _player);
+	void Update();
 	void paint(QPainter& painter) const;
 
 private:
