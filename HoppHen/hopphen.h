@@ -11,7 +11,7 @@ class HoppHen : public QMainWindow
 	Q_OBJECT
 
 public:
-	enum GameState{ Win, Lose, Game, Pause };
+	enum GameState{Intro, Lose, Game, Pause };
 
 	HoppHen(QWidget *parent = 0);
 	~HoppHen();
@@ -35,9 +35,10 @@ private:
 	Enemy* _enemy;
 	Player* _player;
 	WorldManager* _worldManager;
-	QPoint* _playerBottom;
+	ScoreManager* _scoreManager;
 	QMap<int, bool> _keys;
 
+	float introTime;
 	bool _moveWorld;
 	float _worldSpeed;
 	int _bgYPos;

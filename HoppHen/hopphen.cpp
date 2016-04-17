@@ -9,8 +9,11 @@ HoppHen::HoppHen(QWidget *parent)
 	_player = new Player();
 	_enemy = new Enemy();
 	_ground = new Ground();
-
+	
+	_scoreManager = new ScoreManager();
 	_worldManager = new WorldManager(_player, _enemy, _ground);
+
+	introTime = 20000;
 
 	//Starting gameState
 	gameState = Game;
@@ -36,6 +39,18 @@ void HoppHen::update() //hitcheck
 
 	switch (gameState)
 	{
+
+		//Intro
+	case Intro:
+		introTime--;
+		if (introTime < 0)
+		{
+			gameState = Game;
+		}
+
+		break;
+
+		//Game
 	case Game:
 		//Updates
 		_worldManager->Update(_player);
@@ -60,17 +75,17 @@ void HoppHen::update() //hitcheck
 			close();
 
 		repaint();
-
 		break;
 
-	case Win:
 
-		break;
-
+		//Lose
 	case Lose:
-
+		_scoreManager->Update();
+		repaint();
 		break;
 
+
+		//Pause
 	case Pause:
 		if (_keys[Qt::Key_P])
 			gameState = Game;
@@ -106,13 +121,22 @@ void HoppHen::keyPressEvent(QKeyEvent* e)
 void HoppHen::paintEvent(QPaintEvent * e)
 {
 	QPainter p(this);
+	switch (gameState)
+	{
+	case Game:
+		//Bakgrund
+		p.drawPixmap(0, _bgYPos, *_background);
 
-	//Bakgrund
-	p.drawPixmap(0, _bgYPos, *_background);
+		_worldManager->paint(p);
+		_enemy->paint(p);
+		_player->paint(p);
+		break;
 
-	_worldManager->paint(p);
-	_enemy->paint(p);
-	_player->paint(p);
+	case Lose:
+		_scoreManager->paint(p);
+		break;
+	}
+
 }
 
 

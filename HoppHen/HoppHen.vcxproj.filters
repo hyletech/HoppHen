@@ -133,6 +133,12 @@
     <Image Include="..\..\..\..\Pictures\Dirt.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="..\..\..\..\Pictures\DarkenedLose.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Pictures\ScoreScreen.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="HoppHen.rc" />

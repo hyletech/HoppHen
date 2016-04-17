@@ -39,6 +39,12 @@ void WorldManager::Update(Player* _player)
 	player->Update();
 	ground->Update(_player);
 
+	if (player->getYPos() > bottomBoundary)
+	{
+
+	}
+
+	//Move world
 	if (player->getYPos() > 0)
 	{
 		worldSpeed = -((player->getYPos()-W_HEIGHT)*2)*0.003;
