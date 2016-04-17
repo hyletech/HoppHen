@@ -13,7 +13,7 @@ public:
 	void startMove(float vel) { _yvel = vel; }
 	void stopMove() { _yvel = 0; }
 
-	void Update();
+	void Update(Player* _player);
 	void paint(QPainter& painter) const;
 
 private:

@@ -7,7 +7,7 @@
 #define P_WIDTH			50
 #define P_HEIGHT		50
 #define P_START_POS_X	((W_WIDTH / 2) - (P_WIDTH / 2))
-#define P_START_POS_Y	(W_HEIGHT - 150) //Ändra till något lämpligt
+#define P_START_POS_Y	(W_HEIGHT - 200) //Ändra till något lämpligt
 #define P_DAMP_INTERVAL	0.2
 
 //Platform

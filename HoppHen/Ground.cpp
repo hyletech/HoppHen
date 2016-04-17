@@ -8,9 +8,17 @@ Ground::Ground()
 	_yvel = 0;
 }
 
-void Ground::Update()
+void Ground::Update(Player* _player)
 {
+	//Uppdatera pos
 	groundRect->moveBottom(groundRect->bottom() + _yvel);
+
+	//Kollar kollision med spelare
+	if (groundRect->contains(_player->getRect()->bottomLeft()) || groundRect->contains(_player->getRect()->bottomRight()))
+	{
+		if ((_player->getRect()->bottom() > groundRect->top()) && (_player->getyvel() >= 0))
+			_player->setyvel(-15);
+	}
 }
 
 void Ground::paint(QPainter& painter) const

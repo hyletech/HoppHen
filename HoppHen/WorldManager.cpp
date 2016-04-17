@@ -37,7 +37,7 @@ void WorldManager::Update(Player* _player)
 {
 	enemy->update(_player);
 	player->Update();
-	ground->Update();
+	ground->Update(_player);
 
 	if (player->getYPos() > 0)
 	{

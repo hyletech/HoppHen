@@ -95,6 +95,7 @@
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="PlatformBreakable.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="WorldManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -126,10 +127,12 @@
     <ClInclude Include="GeneratedFiles\ui_hopphen.h" />
     <ClInclude Include="defines.h" />
     <ClInclude Include="Ground.h" />
+    <ClInclude Include="includes.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="PlatformBreakable.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="WorldManager.h" />
   </ItemGroup>
   <ItemGroup>

@@ -4,24 +4,15 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_hopphen.h"
 #include <QMouseEvent>
-#include <QKeyEvent>
-#include <QTimer>
-#include <QPainter>
-#include <ctime>
-#include <vector>
-
-#include "Ground.h"
-#include "defines.h"
-#include "Player.h"
-#include "Platform.h"
-#include "Enemy.h"
-#include "WorldManager.h"
+#include "includes.h"
 
 class HoppHen : public QMainWindow
 {
 	Q_OBJECT
 
 public:
+	enum GameState{ Win, Lose, Game, Pause };
+
 	HoppHen(QWidget *parent = 0);
 	~HoppHen();
 
@@ -37,6 +28,7 @@ private:
 	Ui::HoppHenClass ui;
 	QTimer* _timer;
 	QPixmap* _background;
+	GameState gameState;
 
 	//Object
 	Ground* _ground;

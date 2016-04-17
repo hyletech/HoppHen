@@ -3,6 +3,7 @@
 HoppHen::HoppHen(QWidget *parent)
 	: QMainWindow(parent)
 {
+
 	ui.setupUi(this);
 
 	_player = new Player();
@@ -11,6 +12,8 @@ HoppHen::HoppHen(QWidget *parent)
 
 	_worldManager = new WorldManager(_player, _enemy, _ground);
 
+	//Starting gameState
+	gameState = Game;
 
 	//Window
 	setFixedWidth(W_WIDTH);	
@@ -31,27 +34,49 @@ void HoppHen::update() //hitcheck
 {
 	srand(time(NULL));
 
-	//Updates
-	_worldManager->Update(_player);
+	switch (gameState)
+	{
+	case Game:
+		//Updates
+		_worldManager->Update(_player);
 
-	//_moveWorld = _player->getRect()->y() <= W_HEIGHT / 2; //flytta världen om player är över en viss y-position
+		//_moveWorld = _player->getRect()->y() <= W_HEIGHT / 2; //flytta världen om player är över en viss y-position
 
-	
+		//KeyInput
+		//Player movement
+		if (_keys[Qt::Key_Right] || _keys[Qt::Key_D])
+			_player->MoveRight();
+		else if (_keys[Qt::Key_Left] || _keys[Qt::Key_A])
+			_player->MoveLeft();
+		else
+			_player->MoveDampen();
 
-	//KeyInput
-	//Player movement
-	if (_keys[Qt::Key_Right] || _keys[Qt::Key_D])
-		_player->MoveRight();
-	else if(_keys[Qt::Key_Left] || _keys[Qt::Key_A])
-		_player->MoveLeft();
-	else
-		_player->MoveDampen();
+		//Pause
+		if (_keys[Qt::Key_P])
+			gameState = Pause;
 
-	//Stäng av spelet
-	if (_keys[Qt::Key_Escape]) 
-		close();
+		//Stäng av spelet
+		if (_keys[Qt::Key_Escape])
+			close();
 
-	repaint();
+		repaint();
+
+		break;
+
+	case Win:
+
+		break;
+
+	case Lose:
+
+		break;
+
+	case Pause:
+		if (_keys[Qt::Key_P])
+			gameState = Game;
+		break;
+
+	}
 }
 
 

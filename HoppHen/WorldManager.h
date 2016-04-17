@@ -16,7 +16,7 @@ public:
 
 	std::list<Platform>& getPlatforms() { return *platforms; }
 	std::list<Enemy>& getEnemies()		{ return *enemies; }
-	float getWorldSpeed();
+	float getWorldSpeed()		const { return worldSpeed; }
 	float getSpeedDecrease()	const { return speedDecrease; }
 	float getScore()			const { return score; }
 	float getHeight()			const { return height; }
