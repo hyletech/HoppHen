@@ -71,6 +71,8 @@ void Player::Update()
 		playerRect->moveLeft(W_WIDTH - P_WIDTH / 2);
 
 	playerRect->moveBottom(playerRect->bottom() + _yvel);
+	if (_yvel >= 6)
+		_yvel = 6;
 	if (_yvel >= 0)
 		_yvel *= 1.05;
 	//if (playerRect->bottom() >= W_HEIGHT)
