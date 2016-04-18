@@ -12,7 +12,7 @@ public:
 
 
 	void initialize();
-	void Update();
+	void update();
 	void paint(QPainter& painter) const;
 
 	//Movement

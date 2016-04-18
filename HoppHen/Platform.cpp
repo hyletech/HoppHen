@@ -6,7 +6,7 @@ Platform::Platform(int xPos, int yPos)
 	platformTexture = new QPixmap("pizzahut.png"); //Lägg till bild här
 }
 
-void Platform::Update(Player* player)
+void Platform::update(Player* player)
 {
 #if MOVE_WORLD 1 //se i defines.h
 		platformRect->moveBottom(platformRect->bottom() + _yvel);
@@ -42,10 +42,4 @@ void Platform::paint(QPainter& painter) const
 	//painter.drawRect(platformRect->x(), platformRect->y(), PF_WIDTH, PF_HEIGHT);
 }
 
-//Sätter vänstra-top-hörnet till x & y
-void Platform::setPosition(int x, int y)
-{
-	platformRect->moveLeft(x);
-	platformRect->moveTop(y);
-}
 
