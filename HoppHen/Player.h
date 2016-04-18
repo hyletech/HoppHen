@@ -33,6 +33,7 @@ public:
 	QRect* getRect() { return playerRect; }		
 
 	void playerDead();
+	void Reset();
 
 
 private:

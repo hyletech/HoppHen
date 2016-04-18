@@ -5,7 +5,7 @@
 #include <math.h>
 #include <memory>
 
-class WorldManager
+class WorldManager/*: public HoppHen*/
 {
 public:
 	WorldManager(Player* _player);
@@ -16,9 +16,13 @@ public:
 
 	float getScore()	const { return score; }
 	float getHeight()	const { return height; }
+//	void LoseGame() { HoppHen::LoseGame(); };
 
 	void Update();
 	void paint(QPainter& painter) const;
+
+	bool lose = false;
+	void resetWorld();
 
 private:
 	std::vector<Enemy*> _enemies;

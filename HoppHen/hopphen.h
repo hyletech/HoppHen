@@ -20,6 +20,7 @@ public:
 	void keyPressEvent(QKeyEvent* e);
 	void keyReleaseEvent(QKeyEvent *e);
 
+	void LoseGame();
 
 private slots:
 	void update();
@@ -40,7 +41,7 @@ private:
 	bool _moveWorld;
 	float _worldSpeed;
 	int _bgYPos;
-
+	bool keyPress;
 };
 
 #endif // HOPPHEN_H

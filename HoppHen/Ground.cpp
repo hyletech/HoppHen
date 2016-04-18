@@ -21,6 +21,12 @@ void Ground::update(Player* _player)
 	}
 }
 
+void Ground::Reset()
+{
+	groundRect->moveLeft(GROUND_START_X);
+	groundRect->moveTop(GROUND_START_Y);
+}
+
 void Ground::paint(QPainter& painter) const
 {
 	painter.drawPixmap(groundRect->x(), groundRect->y(), GROUND_WIDTH, GROUND_HEIGHT, *groundTexture);

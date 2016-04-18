@@ -94,6 +94,13 @@ void Player::update()
 
 }
 
+void Player::Reset()
+{
+	playerRect->setLeft(P_START_POS_X);
+	playerRect->setTop(P_START_POS_Y);
+	playerTexture = new QPixmap("Eivind.png");
+}
+
 void Player::paint(QPainter& painter) const
 {
 #if 1

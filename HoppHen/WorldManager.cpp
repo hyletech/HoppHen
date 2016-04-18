@@ -28,7 +28,7 @@ void WorldManager::Update()
 	// (sätter till förlorarstate?)
 	if (player->getYPos() > bottomBoundary)
 	{
-
+		lose = true;
 	}
 
 
@@ -55,9 +55,16 @@ void WorldManager::Update()
 	ground->update(player);
 }
 
+void WorldManager::resetWorld()
+{
+	ground->Reset();
+	player->Reset();
+}
+
 void WorldManager::initPlatforms()
 {
 #if 0 
+
 	int spaceX = 0;
 	int spaceY = 50;
 	if (_platforms.size() == 0)

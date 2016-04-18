@@ -19,6 +19,5 @@ void ScoreManager::Update()
 
 void ScoreManager::paint(QPainter& painter) const
 {
-
 	painter.drawPixmap(0,0, W_WIDTH , W_HEIGHT, *darkenedLose);
 }
