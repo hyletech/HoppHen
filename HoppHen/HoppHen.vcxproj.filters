@@ -139,6 +139,9 @@
     <Image Include="..\..\..\..\Pictures\ScoreScreen.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="EivindDead.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="HoppHen.rc" />

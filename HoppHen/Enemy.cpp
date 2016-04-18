@@ -40,7 +40,8 @@ void Enemy::update()
 	//Om player/enemy-kollision
 	if (enemyRect->contains(player->getXPos(), player->getYPos()))
 	{
-		player->setyvel(100);
+		player->setyvel(5);
+		player->playerDead();
 	}
 }
 

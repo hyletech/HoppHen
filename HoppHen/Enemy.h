@@ -25,7 +25,7 @@ private:
 	QRect* enemyRect;
 
 	Player* player;
-
+	
 	int xPos;
 	int yPos;
 

@@ -3,6 +3,7 @@
 #include <vector>
 #include <QPainter>
 
+
 #pragma once
 class Player
 {
@@ -30,6 +31,8 @@ public:
 	int getYPos(){ return playerRect->y(); }
 	int getXPos(){ return playerRect->x(); }
 	QRect* getRect() { return playerRect; }		
+
+	void playerDead();
 
 
 private:

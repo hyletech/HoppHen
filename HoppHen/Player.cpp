@@ -51,6 +51,11 @@ void Player::MoveDampen()
 		xVel = 0;
 }
 
+void Player::playerDead()
+{
+	playerTexture = new QPixmap("EivindDead.png");
+}
+
 void Player::initialize()
 {
 	//Ändrar spelarens startposition
