@@ -1,13 +1,15 @@
 #include "WorldManager.h"
-#include <math.h>
+#include <ctime>
 
 WorldManager::WorldManager(Player* _player)
 {
+	srand(time(NULL));
+
 	initPlatforms();
+	initEnemies();
 
 	player = _player;
 	ground = new Ground();
-	enemy = new Enemy(_player);
 
 	//WorldMovement
 	worldSpeed = 0;
@@ -17,53 +19,40 @@ WorldManager::WorldManager(Player* _player)
 	topBoundary = -100;
 }
 
-////Init of platforms
-//void WorldManager::initPlatforms()
-//{
-//	for (int i = 0; i < platFormCount; i++)
-//	{
-//		int xPos = rand() % (W_WIDTH - PF_WIDTH) + 1; 
-//		int yPos = i * platformYDistance;
-//		Platform* p = new Platform(xPos, yPos);
-//		platforms->push_back(*p);
-//	}
-//}
-
 void WorldManager::Update()
 {
-	enemy->update();
-	player->Update();
-	ground->Update(player);
+	//Move world
+	if (player->getYPos() > 0)
+		worldSpeed = -((player->getYPos() - W_HEIGHT) * 2)*0.003;
 
+	// (sätter till förlorarstate?)
 	if (player->getYPos() > bottomBoundary)
 	{
 
 	}
 
-	//Move world
-	if (player->getYPos() > 0)
-		worldSpeed = -((player->getYPos() - W_HEIGHT) * 2)*0.003;
 
 	//Gör att player flyttas med i världen
 	player->startMoveWithWorld(worldSpeed);
+	player->update();
 
 	//Uppdatera plattformerna, samt hitcheck med spelare och plattform
 	for (int i = 0; i < _platforms.size(); i++)
 	{
 		_platforms[i]->startMove(worldSpeed);
-		_platforms[i]->Update(player);
+		_platforms[i]->update(player);
 	}
 
-	//Flytta fiender
-	enemy->startMove(worldSpeed);
-
-	//Flytta mark
-	ground->startMove(worldSpeed);
-
-	/*if (player->getYPos < groundRect->getRect.top())
+	//Flytta och uppdatera fiender
+	for (int i = 0; i < _enemies.size(); i++)
 	{
+		_enemies[i]->startMove(worldSpeed);
+		_enemies[i]->update(player);
+	}
 
-	}*/
+	//Uppdatera och flytta mark
+	ground->startMove(worldSpeed);
+	ground->update(player);
 }
 
 void WorldManager::initPlatforms()
@@ -82,34 +71,50 @@ void WorldManager::initPlatforms()
 		}
 	}
 #else
-	//Random i x-led
-	if (_platforms.size() == 0)
+	//Tar bort ev platformar
+	if (!_platforms.size() == 0)
+		for_each(_platforms.begin(), _platforms.end(), std::default_delete<Platform>());
+
+	//Skapar nya platforms och lägger till i vector
+	for (int i = 0; i < PF_NUM_OF_PLATFORMS; i++)
 	{
-		for (int i = 0; i < 20; i++)
-		{
-			int xPos = rand() % (W_WIDTH - PF_WIDTH - E_PADDING) + 1;
-			int yPos = W_HEIGHT - (i * 100) - 200;
-			Platform* p = new Platform(xPos, yPos);
-			_platforms.push_back(p);
-		}
+		int xPos = rand() % (W_WIDTH - PF_WIDTH - E_PADDING) + 1;
+		int yPos = W_HEIGHT - (i * 100) - 200;
+		Platform* p = new Platform(xPos, yPos);
+		_platforms.push_back(p);
 	}
+	
 #endif
 }
 
+void WorldManager::initEnemies()
+{
+	//Tar bort fiender om det finns
+	if (!_enemies.size() == 0)
+		for_each(_enemies.begin(), _enemies.end(), std::default_delete<Enemy>());
+	
+	//Skapar nya enemies och lägger till i list
+	for (int i = 0; i < E_NUM_OF_ENEMIES; i++)
+	{
+		int yPos = -((i + 1) * 1500) + 1000;
+		Enemy* e = new Enemy(yPos);
+		_enemies.push_back(e);
+	}
+
+}
 
 void WorldManager::paint(QPainter& painter) const
 {
-	//Mark
-	ground->paint(painter);
-
+	player->paint(painter);
 
 	//Plattformer
 	for (int i = 0; i < _platforms.size(); i++)
 		_platforms[i]->paint(painter);
 
 	//Fiender
-	enemy->paint(painter);
+	for (int i = 0; i < _enemies.size(); i++)
+		_enemies[i]->paint(painter);
 
-	player->paint(painter);
-
+	//Mark
+	ground->paint(painter);
 }

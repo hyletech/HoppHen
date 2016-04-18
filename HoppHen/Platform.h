@@ -10,13 +10,12 @@ class Platform
 public:
 	Platform(int xPos, int yPos);
 
-	void Update(Player* player);
+	void update(Player* player);
 	void paint(QPainter& painter) const;
-	void setPosition(int x, int y);
-	QRect getRect() const { return *platformRect; }
+	QRect getRect() const		{ return *platformRect; }
 
-	void startMove(float vel) { _yvel = vel; }
-	void stopMove() { _yvel = 0; }
+	void startMove(float vel)	{ _yvel = vel; }
+	void stopMove()				{ _yvel = 0; }
 	virtual void giveEffect(){}
 
 protected:

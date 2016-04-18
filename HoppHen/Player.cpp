@@ -62,7 +62,7 @@ void Player::initialize()
 	playerRect->moveTopLeft(QPoint(P_START_POS_X, P_START_POS_Y));
 }
 
-void Player::Update()
+void Player::update()
 {
 	//Uppdaterar spelaren position
 	int newX = playerRect->x() + xVel;

@@ -8,15 +8,15 @@
 class Enemy
 {
 public:
-	Enemy(Player* _player);
+	Enemy(int height);
 	~Enemy();
 
 	void initialize();
-	void update();
+	void update(Player* _player);
 	void paint(QPainter& painter) const;
 
-	void startMove(float vel) { _yvel = vel; }
-	void stopMove() { _yvel = 0; }
+	void startMove(float vel) { yVel = vel; }
+	void stopMove() { yVel = 0; }
 
 	QRect* getRect() { return enemyRect; }
 
@@ -29,7 +29,7 @@ private:
 	int xPos;
 	int yPos;
 
-	float _yvel;
+	float yVel;
 	float xVel;
 	float moveSpeed;
 	float maxSpeed;

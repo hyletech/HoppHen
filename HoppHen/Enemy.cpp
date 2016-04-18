@@ -1,14 +1,13 @@
 #include "Enemy.h"
 
-Enemy::Enemy(Player* _player)
+Enemy::Enemy(int height)
 {
-	player = _player;
 	xPos = E_START_POS_X;
-	yPos = E_START_POS_Y;
+	yPos = height;
 	enemyRect = new QRect(xPos, yPos, E_WIDTH, E_HEIGHT);
 	enemyTexture = new QPixmap("monster1.png"); //Fixa bild
-	_yvel = 0;
 
+	yVel = 0;
 	xVel = 5;
 	moveSpeed = 0.2;
 	maxSpeed = 5;
@@ -26,7 +25,7 @@ void Enemy::initialize()
 
 }
 
-void Enemy::update()
+void Enemy::update(Player* player)
 {
 	if (enemyRect->right() > W_WIDTH - E_PADDING && xVel > 0)
 		xVel *= -1;
@@ -35,7 +34,7 @@ void Enemy::update()
 
 	enemyRect->moveLeft(enemyRect->x() + xVel);
 
-	enemyRect->moveBottom(enemyRect->bottom() + _yvel);
+	enemyRect->moveBottom(enemyRect->bottom() + yVel);
 
 	//Om player/enemy-kollision
 	if (enemyRect->contains(player->getXPos(), player->getYPos()))

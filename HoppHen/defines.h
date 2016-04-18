@@ -13,6 +13,8 @@
 //Platform
 #define PF_WIDTH		100 //Tog från c#-projektet 
 #define PF_HEIGHT		20
+#define PF_NUM_OF_PLATFORMS 30
+
 
 //Enemy
 #define E_WIDTH			200 //Sätt utifrån bildstorlek
@@ -21,6 +23,7 @@
 #define E_START_POS_Y	E_HEIGHT //Gör att den spawnar precis utanför skärmen
 #define E_PADDING		50 //px från väggen byter den håll
 #define E_DAMP_INTERVAL	0.2
+#define E_NUM_OF_ENEMIES 2
 
 //Background
 #define BG_WIDTH		600

@@ -8,7 +8,7 @@ Ground::Ground()
 	_yvel = 0;
 }
 
-void Ground::Update(Player* _player)
+void Ground::update(Player* _player)
 {
 	//Uppdatera pos
 	groundRect->moveBottom(groundRect->bottom() + _yvel);
