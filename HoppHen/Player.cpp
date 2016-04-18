@@ -6,15 +6,15 @@ Player::Player()
 	playerTexture = new QPixmap("Eivind.png");
 	playerRect = new QRect(P_START_POS_X, P_START_POS_Y, P_WIDTH, P_HEIGHT);
 
-	_yvel = 1;
+	yVel = 2;
+	worldSpeed = 0;
 	xVel = 0;
-	moveSpeed = 0.2;
-	maxSpeed = 7;
+	moveXSpeed = 0.2;
+	maxXSpeed = 7;
 	xDampen = 0.2;
 
 	moveLeft = false;
 	moveRight = false;
-	jumpBool = 0; 
 }
 
 
@@ -29,15 +29,15 @@ Player::~Player()
 void Player::MoveRight()
 {
 	//Ökar hastigheten i X
-	if (xVel < maxSpeed)
-		xVel += moveSpeed;
+	if (xVel < maxXSpeed)
+		xVel += moveXSpeed;
 }
 
 void Player::MoveLeft()
 {
 	//Minskar hastigheten i X
-	if (xVel > -maxSpeed)
-		xVel -= moveSpeed;
+	if (xVel > -maxXSpeed)
+		xVel -= moveXSpeed;
 }
 
 void Player::MoveDampen()
@@ -70,19 +70,22 @@ void Player::Update()
 	else if (playerRect->right() < 0)
 		playerRect->moveLeft(W_WIDTH - P_WIDTH / 2);
 
-	playerRect->moveBottom(playerRect->bottom() + _yvel);
-	if (_yvel >= 6)
-		_yvel = 6;
-	if (_yvel >= 0)
-		_yvel *= 1.05;
-	//if (playerRect->bottom() >= W_HEIGHT)
-	//	_yvel = -15;
+	//Gravitation
+	playerRect->moveBottom(playerRect->bottom() + yVel + worldSpeed);
+	//Om hastighet är större än 6 nedåt
+	if (yVel > 6)
+		yVel = 6;
+	//Om hastighet nedåt
+	if (yVel >= 0)
+		yVel *= 1.05;
+	//Om slår i taket, ge 1 nedåt
 	if (playerRect->top() <= 0)
-		_yvel = 1;
-	if (_yvel <= 0)
-		_yvel = (_yvel * 0.95);
-	if (_yvel > -0.5 && _yvel < 0)
-		_yvel = 1;
+		yVel = 1;
+	//Om hastighet uppåt
+	if (yVel <= 0)
+		yVel *= 0.95;
+	if (yVel > -0.3 && yVel < 0)
+		yVel = 1;
 
 }
 

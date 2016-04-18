@@ -42,9 +42,10 @@ void WorldManager::Update()
 
 	//Move world
 	if (player->getYPos() > 0)
-	{
-		worldSpeed = -((player->getYPos()-W_HEIGHT)*2)*0.003;
-	}
+		worldSpeed = -((player->getYPos() - W_HEIGHT) * 2)*0.003;
+
+	//Gör att player flyttas med i världen
+	player->startMoveWithWorld(worldSpeed);
 
 	//Uppdatera plattformerna, samt hitcheck med spelare och plattform
 	for (int i = 0; i < _platforms.size(); i++)

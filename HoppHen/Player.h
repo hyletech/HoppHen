@@ -20,8 +20,12 @@ public:
 	void MoveLeft();
 	void MoveDampen();
 
-	float getyvel() const  { return _yvel; }
-	void setyvel(float yvel) { _yvel = yvel; }
+	float getyvel() const  { return yVel; }
+	void setyvel(float vel) { yVel = vel; }
+
+	void startMoveWithWorld(float vel) { worldSpeed = vel; }
+	void stopMoveWithWorld() { worldSpeed = 0; }
+
 
 	int getYPos(){ return playerRect->y(); }
 	int getXPos(){ return playerRect->x(); }
@@ -31,15 +35,15 @@ public:
 private:
 	QPixmap* playerTexture;
 	QRect* playerRect;
-	float _yvel;
+	float yVel;
+	float worldSpeed;
 
 	double xVel;	//Velocity of player
-	double moveSpeed;
-	double maxSpeed;
+	double moveXSpeed;
+	double maxXSpeed;
 	double xDampen;
 
 	bool moveLeft;
 	bool moveRight;
-	bool jumpBool; //Allows the player to jump once
 };
 
