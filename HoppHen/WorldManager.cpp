@@ -7,16 +7,10 @@ WorldManager::WorldManager(Player* _player)
 
 	initPlatforms();
 	initEnemies();
+	initWorld();
 
 	player = _player;
 	ground = new Ground();
-
-	//WorldMovement
-	worldSpeed = 0;
-
-	//Boundaries
-	bottomBoundary = W_HEIGHT + 100;
-	topBoundary = -100;
 }
 
 void WorldManager::Update()
@@ -57,8 +51,13 @@ void WorldManager::Update()
 
 void WorldManager::resetWorld()
 {
+	initPlatforms();
+ 	initEnemies();
+	initWorld();
 	ground->Reset();
 	player->Reset();
+
+
 }
 
 void WorldManager::initPlatforms()
@@ -80,7 +79,10 @@ void WorldManager::initPlatforms()
 #else
 	//Tar bort ev platformar
 	if (!_platforms.size() == 0)
+	{
 		for_each(_platforms.begin(), _platforms.end(), std::default_delete<Platform>());
+		_platforms.clear();
+	}
 
 	//Skapar nya platforms och lägger till i vector
 	for (int i = 0; i < PF_NUM_OF_PLATFORMS; i++)
@@ -98,7 +100,10 @@ void WorldManager::initEnemies()
 {
 	//Tar bort fiender om det finns
 	if (!_enemies.size() == 0)
+	{
 		for_each(_enemies.begin(), _enemies.end(), std::default_delete<Enemy>());
+		_enemies.clear();
+	}
 	
 	//Skapar nya enemies och lägger till i list
 	for (int i = 0; i < E_NUM_OF_ENEMIES; i++)
@@ -108,6 +113,16 @@ void WorldManager::initEnemies()
 		_enemies.push_back(e);
 	}
 
+}
+
+void WorldManager::initWorld()
+{
+	//WorldMovement
+	worldSpeed = 0;
+
+	//Boundaries
+	bottomBoundary = W_HEIGHT + 100;
+	topBoundary = -100;
 }
 
 void WorldManager::paint(QPainter& painter) const

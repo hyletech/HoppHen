@@ -13,6 +13,7 @@ public:
 
 	void initPlatforms();
 	void initEnemies();
+	void initWorld();
 
 	float getScore()	const { return score; }
 	float getHeight()	const { return height; }
