@@ -9,8 +9,8 @@ HoppHen::HoppHen(QWidget *parent)
 	_player = new Player();
 	
 	_scoreManager = new ScoreManager();
-	_worldManager = new WorldManager(_player);
-	
+
+	_worldManager = new WorldManager(_player, _scoreManager);
 
 	introTime = 20000;
 
@@ -29,6 +29,9 @@ HoppHen::HoppHen(QWidget *parent)
 	_timer = new QTimer(this);
 	connect(_timer, SIGNAL(timeout()), this, SLOT(update()));
 	_timer->start(16);
+
+	//Keypress
+	keyPress = false;
 }
 
 
@@ -53,6 +56,11 @@ void HoppHen::update() //hitcheck
 	case Game:
 		//Updates
 		_worldManager->Update();
+
+		if (_worldManager->lose)
+		{
+			gameState = Lose;
+		}
 
 		//_moveWorld = _player->getRect()->y() <= W_HEIGHT / 2; //flytta världen om player är över en viss y-position
 
@@ -86,6 +94,14 @@ void HoppHen::update() //hitcheck
 	case Lose:
 		_scoreManager->Update();
 		repaint();
+
+		if (_keys[Qt::Key_R])
+		{
+			_worldManager->lose = false;
+			gameState = Game;
+			_worldManager->resetWorld();
+			_scoreManager->Reset();
+		}
 		break;
 
 
@@ -109,16 +125,9 @@ void HoppHen::update() //hitcheck
 //
 //}
 
-
-void HoppHen::keyReleaseEvent(QKeyEvent *e)
+void HoppHen::LoseGame()
 {
-	_keys[e->key()] = false; 
-}
-
-
-void HoppHen::keyPressEvent(QKeyEvent* e)
-{
-	_keys[e->key()] = true; 
+	gameState = Lose;
 }
 
 
@@ -135,6 +144,7 @@ void HoppHen::paintEvent(QPaintEvent * e)
 		break;
 
 	case Lose:
+		_worldManager->paint(p);
 		_scoreManager->paint(p);
 		break;
 	}

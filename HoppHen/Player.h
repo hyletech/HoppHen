@@ -37,19 +37,18 @@ public:
 	int getXPos(){ return playerRect->x(); }
 	QRect* getRect() { return playerRect; }		
 
-	
 	void Player::keyPressEvent(QKeyEvent *e) { _keys[e->key()] = true; }
 	void Player::keyReleaseEvent(QKeyEvent* e) { _keys[e->key()] = false; }
 	
 	QMap<int, bool> _keys;
 
 	void playerDead(); 
+	void Reset();
 
 
 private:
 	QPixmap* playerTexture;
 	QRect* playerRect;
-	
 
 	float yVel;
 	float worldSpeed;

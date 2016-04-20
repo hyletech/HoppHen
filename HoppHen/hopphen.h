@@ -17,9 +17,11 @@ public:
 	~HoppHen();
 
 	void paintEvent(QPaintEvent * e);
-	void keyPressEvent(QKeyEvent* e);
-	void keyReleaseEvent(QKeyEvent *e);
 
+	void HoppHen::keyReleaseEvent(QKeyEvent *e){_keys[e->key()] = false;}
+	void HoppHen::keyPressEvent(QKeyEvent* e){_keys[e->key()] = true;}
+
+	void LoseGame();
 
 private slots:
 	void update();
@@ -41,7 +43,7 @@ private:
 	bool _moveWorld;
 	float _worldSpeed;
 	int _bgYPos;
-
+	bool keyPress;
 };
 
 #endif // HOPPHEN_H

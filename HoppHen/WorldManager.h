@@ -4,21 +4,27 @@
 #include "Ground.h"
 #include <math.h>
 #include <memory>
+#include <ScoreManager.h>
 
-class WorldManager
+class WorldManager/*: public HoppHen*/
 {
 public:
-	WorldManager(Player* _player);
+	WorldManager(Player* _player, ScoreManager* _scoreManager);
 	~WorldManager();
 
 	void initPlatforms();
 	void initEnemies();
+	void initWorld();
 
 	float getScore()	const { return score; }
 	float getHeight()	const { return height; }
+//	void LoseGame() { HoppHen::LoseGame(); };
 
 	void Update();
 	void paint(QPainter& painter) const;
+
+	bool lose = false;
+	void resetWorld();
 
 private:
 	std::vector<Enemy*> _enemies;
@@ -27,6 +33,7 @@ private:
 
 	Ground* ground;
 	Player* player;
+	ScoreManager* scoreManager;
 
 	//Boundaries
 	int bottomBoundary;

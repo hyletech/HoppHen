@@ -161,4 +161,9 @@
   <ItemGroup>
     <ResourceCompile Include="HoppHen.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="HiScores.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

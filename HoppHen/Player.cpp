@@ -100,10 +100,20 @@ void Player::update()
 	}
 }
 
+
 void Player::Shoot()
 {
 	Shot* shot = new Shot(playerRect->x(), playerRect->y());
 	_shots.push_back(shot);
+}
+
+
+
+void Player::Reset()
+{
+	playerRect->moveLeft(P_START_POS_X);
+	playerRect->moveTop(P_START_POS_Y);
+	playerTexture = new QPixmap("Eivind.png");
 }
 
 

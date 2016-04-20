@@ -15,22 +15,16 @@ void Platform::update(Player* player)
 	//Om player/platform-kollision
 	if (platformRect->contains(player->getRect()->bottomLeft()) || platformRect->contains(player->getRect()->bottomRight()))
 	{
-		//Onödig rad?
-		//player->getRect()->moveBottom(_player->getRect()->bottom() + _player->getyvel()); 
-
-		//också onödig rad?
-		//Om kommer från undersidan
-		//if (player->getyvel() >= 0)
-		//	player->setyvel(_player->getyvel() * 1.05);
-
 		//Om kommer ovanpå med pos yVel (nedåt)
 		if ((player->getRect()->bottom() > platformRect->top()) && (player->getyvel() >= 0))
 			player->setyvel(-15);
-
-		//vad gör denna?
-		//if (player->getyvel() > -0.5 && _player->getyvel() < 0) 
-		//	player->setyvel(1);
 	}
+}
+
+void Platform::setPos(const int _newY, const int _newX)
+{
+	platformRect->moveBottom(_newY);
+	platformRect->moveLeft(_newX);
 }
 
 void Platform::paint(QPainter& painter) const

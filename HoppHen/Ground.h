@@ -16,6 +16,8 @@ public:
 	void update(Player* _player);
 	void paint(QPainter& painter) const;
 
+	void Reset();
+
 private:
 	QPixmap* groundTexture;
 	QRect* groundRect;

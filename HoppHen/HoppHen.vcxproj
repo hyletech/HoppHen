@@ -179,6 +179,9 @@
   <ItemGroup>
     <ResourceCompile Include="HoppHen.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="HiScores.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
