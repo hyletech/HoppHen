@@ -17,8 +17,10 @@ public:
 	~HoppHen();
 
 	void paintEvent(QPaintEvent * e);
-	void keyPressEvent(QKeyEvent* e);
-	void keyReleaseEvent(QKeyEvent *e);
+
+	void HoppHen::keyReleaseEvent(QKeyEvent *e){_keys[e->key()] = false;}
+	void HoppHen::keyPressEvent(QKeyEvent* e){_keys[e->key()] = true;}
+
 
 	void LoseGame();
 

@@ -1,7 +1,7 @@
 #include "WorldManager.h"
 #include <ctime>
 
-WorldManager::WorldManager(Player* _player)
+WorldManager::WorldManager(Player* _player, ScoreManager* _scoreManager)
 {
 	srand(time(NULL));
 
@@ -10,6 +10,7 @@ WorldManager::WorldManager(Player* _player)
 	initWorld();
 
 	player = _player;
+	scoreManager = _scoreManager;
 	ground = new Ground();
 }
 
@@ -47,6 +48,9 @@ void WorldManager::Update()
 	//Uppdatera och flytta mark
 	ground->startMove(worldSpeed);
 	ground->update(player);
+
+	//Lägg till score
+	scoreManager->AddScore(worldSpeed);
 }
 
 void WorldManager::resetWorld()

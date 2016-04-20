@@ -4,11 +4,12 @@
 #include "Ground.h"
 #include <math.h>
 #include <memory>
+#include <ScoreManager.h>
 
 class WorldManager/*: public HoppHen*/
 {
 public:
-	WorldManager(Player* _player);
+	WorldManager(Player* _player, ScoreManager* _scoreManager);
 	~WorldManager();
 
 	void initPlatforms();
@@ -31,6 +32,7 @@ private:
 
 	Ground* ground;
 	Player* player;
+	ScoreManager* scoreManager;
 
 	//Boundaries
 	int bottomBoundary;

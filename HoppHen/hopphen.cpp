@@ -9,7 +9,7 @@ HoppHen::HoppHen(QWidget *parent)
 	_player = new Player();
 	
 	_scoreManager = new ScoreManager();
-	_worldManager = new WorldManager(_player);
+	_worldManager = new WorldManager(_player, _scoreManager);
 
 	introTime = 20000;
 
@@ -94,6 +94,7 @@ void HoppHen::update() //hitcheck
 			_worldManager->lose = false;
 			gameState = Game;
 			_worldManager->resetWorld();
+			_scoreManager->Reset();
 		}
 		break;
 
@@ -121,17 +122,6 @@ void HoppHen::update() //hitcheck
 void HoppHen::LoseGame()
 {
 	gameState = Lose;
-}
-
-void HoppHen::keyReleaseEvent(QKeyEvent *e)
-{
-	_keys[e->key()] = false; 
-}
-
-
-void HoppHen::keyPressEvent(QKeyEvent* e)
-{
-	_keys[e->key()] = true; 
 }
 
 
