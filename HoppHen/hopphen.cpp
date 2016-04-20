@@ -10,6 +10,7 @@ HoppHen::HoppHen(QWidget *parent)
 	
 	_scoreManager = new ScoreManager();
 	_worldManager = new WorldManager(_player);
+	
 
 	introTime = 20000;
 
@@ -63,6 +64,11 @@ void HoppHen::update() //hitcheck
 			_player->MoveLeft();
 		else
 			_player->MoveDampen();
+
+		if (_keys[Qt::Key_Space])
+		{
+			_player->Shoot();
+		}
 
 		//Pause
 		if (_keys[Qt::Key_P])

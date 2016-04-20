@@ -32,6 +32,7 @@ private:
 
 	//Object
 	Player* _player;
+	Shot* _shot;
 	WorldManager* _worldManager;
 	ScoreManager* _scoreManager;
 	QMap<int, bool> _keys;

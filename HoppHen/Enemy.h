@@ -13,6 +13,7 @@ public:
 
 	void initialize();
 	void update(Player* _player);
+	void EnemyDead();
 	void paint(QPainter& painter) const;
 
 	void startMove(float vel) { yVel = vel; }

@@ -1,4 +1,5 @@
 #include "Player.h"
+#include <QtGui/QKeyEvent>
 
 
 Player::Player()
@@ -51,6 +52,7 @@ void Player::MoveDampen()
 		xVel = 0;
 }
 
+//Ändrar spelarens aniskte till "ett dött ansikte"
 void Player::playerDead()
 {
 	playerTexture = new QPixmap("EivindDead.png");
@@ -92,16 +94,24 @@ void Player::update()
 	if (yVel > -0.3 && yVel < 0)
 		yVel = 1;
 
+	for (int i = 0; i < _shots.size(); i++)
+	{
+		_shots[i]->update();
+	}
 }
+
+void Player::Shoot()
+{
+	Shot* shot = new Shot(playerRect->x(), playerRect->y());
+	_shots.push_back(shot);
+}
+
 
 void Player::paint(QPainter& painter) const
 {
-#if 1
 	painter.drawPixmap(playerRect->x(), playerRect->y(), P_WIDTH, P_HEIGHT, *playerTexture);
-#else
-	QBrush br;
-	br.setColor(Qt::blue);
-	painter.setBrush(br);
-	painter.drawRect(playerRect->x(), playerRect->y(), playerRect->width(), playerRect->height());
-#endif
+	for (int i = 0; i < _shots.size(); i++)
+	{
+		_shots[i]->paint(painter);
+	}
 }

@@ -2,6 +2,10 @@
 #include "defines.h"
 #include <vector>
 #include <QPainter>
+#include <QtGui/QKeyEvent>
+#include "Shot.h"
+
+
 
 
 #pragma once
@@ -14,6 +18,7 @@ public:
 
 	void initialize();
 	void update();
+	void Shoot();
 	void paint(QPainter& painter) const;
 
 	//Movement
@@ -32,12 +37,20 @@ public:
 	int getXPos(){ return playerRect->x(); }
 	QRect* getRect() { return playerRect; }		
 
-	void playerDead();
+	
+	void Player::keyPressEvent(QKeyEvent *e) { _keys[e->key()] = true; }
+	void Player::keyReleaseEvent(QKeyEvent* e) { _keys[e->key()] = false; }
+	
+	QMap<int, bool> _keys;
+
+	void playerDead(); 
 
 
 private:
 	QPixmap* playerTexture;
 	QRect* playerRect;
+	
+
 	float yVel;
 	float worldSpeed;
 
@@ -45,6 +58,8 @@ private:
 	double moveXSpeed;
 	double maxXSpeed;
 	double xDampen;
+
+	std::vector<Shot*> _shots;
 
 	bool moveLeft;
 	bool moveRight;

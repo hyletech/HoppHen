@@ -37,4 +37,9 @@
 #define GROUND_START_Y	700
 #define GROUND_START_X	0
 
+//Shot
+#define S_WIDTH			15
+#define S_HEIGHT		45
+
+
 #define MOVE_WORLD		1

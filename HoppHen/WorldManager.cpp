@@ -114,7 +114,9 @@ void WorldManager::paint(QPainter& painter) const
 	//Fiender
 	for (int i = 0; i < _enemies.size(); i++)
 		_enemies[i]->paint(painter);
-
+	
 	//Mark
 	ground->paint(painter);
+
+
 }

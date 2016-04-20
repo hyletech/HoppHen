@@ -44,6 +44,11 @@ void Enemy::update(Player* player)
 	}
 }
 
+void Enemy::EnemyDead()
+{
+	
+}
+
 
 void Enemy::paint(QPainter& painter) const
 {
