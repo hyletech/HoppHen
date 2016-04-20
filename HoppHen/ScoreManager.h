@@ -4,12 +4,16 @@
 #include <QTimer>
 #include <ctime>
 #include <qstring.h>
+#include <iostream>
+#include <fstream>
 class ScoreManager
 {
 public:
 	ScoreManager();
 	~ScoreManager();
 
+	int ReadHiScore() const;
+	void WriteHiScore(int _score) const;
 	void Update();
 	void AddScore(float _scoreToAdd);
 	void Reset();
