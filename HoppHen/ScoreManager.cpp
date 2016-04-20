@@ -10,9 +10,6 @@ ScoreManager::ScoreManager()
 	scoreTextY = W_HEIGHT;
 	score = 0;
 
-	//QTimer *timer = new QTimer(this);
-	//connect(timer, SIGNAL(timeout()), this, SLOT(updateCaption()));
-	//timer->start(1000);
 	ReadHiScore();
 }
 

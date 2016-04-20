@@ -20,12 +20,11 @@ void WorldManager::Update()
 	if (player->getYPos() > 0)
 		worldSpeed = -((player->getYPos() - W_HEIGHT) * 2)*0.003;
 
-	// (sätter till förlorarstate?)
+	// (sätter till förlorarstate?) yup
 	if (player->getYPos() > bottomBoundary)
 	{
 		lose = true;
 	}
-
 
 	//Gör att player flyttas med i världen
 	player->startMoveWithWorld(worldSpeed);
@@ -36,6 +35,12 @@ void WorldManager::Update()
 	{
 		_platforms[i]->startMove(worldSpeed);
 		_platforms[i]->update(player);
+
+		//Flyttar plattformen om den går under bottomboundary
+		if (_platforms[i]->getRect().y() > bottomBoundary)
+		{
+			_platforms[i]->setPos(topBoundary);
+		}
 	}
 
 	//Flytta och uppdatera fiender
@@ -60,27 +65,10 @@ void WorldManager::resetWorld()
 	initWorld();
 	ground->Reset();
 	player->Reset();
-
-
 }
 
 void WorldManager::initPlatforms()
 {
-#if 0 
-
-	int spaceX = 0;
-	int spaceY = 50;
-	if (_platforms.size() == 0)
-	{
-		for (int x = 0; x < 25; x++)
-		{
-			Platform* n = new Platform(spaceX, spaceY);
-			_platforms.push_back(n);
-			spaceX += 25;
-			spaceY += 120;
-		}
-	}
-#else
 	//Tar bort ev platformar
 	if (!_platforms.size() == 0)
 	{
@@ -96,8 +84,6 @@ void WorldManager::initPlatforms()
 		Platform* p = new Platform(xPos, yPos);
 		_platforms.push_back(p);
 	}
-	
-#endif
 }
 
 void WorldManager::initEnemies()

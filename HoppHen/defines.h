@@ -13,7 +13,7 @@
 //Platform
 #define PF_WIDTH		100 //Tog från c#-projektet 
 #define PF_HEIGHT		20
-#define PF_NUM_OF_PLATFORMS 30
+#define PF_NUM_OF_PLATFORMS 10
 
 
 //Enemy
