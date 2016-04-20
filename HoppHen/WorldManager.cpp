@@ -39,7 +39,9 @@ void WorldManager::Update()
 		//Flyttar plattformen om den går under bottomboundary
 		if (_platforms[i]->getRect().y() > bottomBoundary)
 		{
-			_platforms[i]->setPos(topBoundary);
+			int randInt = 5830;
+			int xPos = (rand() * randInt) % (W_WIDTH - PF_WIDTH - E_PADDING) + 1;
+			_platforms[i]->setPos(topBoundary, xPos);
 		}
 	}
 

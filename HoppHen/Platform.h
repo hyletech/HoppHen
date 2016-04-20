@@ -4,6 +4,7 @@
 #include <QPainter>
 #include "Player.h"
 #include <stdlib.h>
+#include <ctime>
 
 class Platform
 {
@@ -14,7 +15,7 @@ public:
 	void paint(QPainter& painter) const;
 	QRect getRect() const		{ return *platformRect; }
 
-	void setPos(const int _newY);
+	void setPos(const int _newY, const int _newX);
 
 	void startMove(float vel)	{ _yvel = vel; }
 	void stopMove()				{ _yvel = 0; }

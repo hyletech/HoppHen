@@ -21,13 +21,10 @@ void Platform::update(Player* player)
 	}
 }
 
-void Platform::setPos(const int _newY)
+void Platform::setPos(const int _newY, const int _newX)
 {
-	platformRect->moveBottom(_newY);		//Y
-	int minX = 0;
-	int maxX = 530;
-	int newX = rand() % maxX + minX;
-	platformRect->moveLeft(newX);
+	platformRect->moveBottom(_newY);
+	platformRect->moveLeft(_newX);
 }
 
 void Platform::paint(QPainter& painter) const
