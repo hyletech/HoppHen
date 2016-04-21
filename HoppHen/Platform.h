@@ -14,16 +14,11 @@ public:
 	void update(Player* player);
 	void paint(QPainter& painter) const;
 	QRect getRect() const		{ return *platformRect; }
-
 	void setPos(const int _newY, const int _newX);
-
-	void startMove(float vel)	{ _yvel = vel; }
-	void stopMove()				{ _yvel = 0; }
-	virtual void giveEffect(){}
+	void startMove(float _vel);
 
 protected:
 	QPixmap* platformTexture;
 	QRect* platformRect;
-	float _yvel;
 
 };

@@ -41,8 +41,7 @@ void WorldManager::Update()
 	}
 
 	//Gör att player flyttas med i världen
-	player->startMoveWithWorld(worldSpeed);
-	player->update();
+	player->update(worldSpeed);
 
 	//Uppdatera plattformerna, samt hitcheck med spelare och plattform
 	for (int i = 0; i < _platforms.size(); i++)

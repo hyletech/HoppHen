@@ -15,9 +15,7 @@ public:
 	Player();
 	~Player();
 
-
-	void initialize();
-	void update();
+	void update(int _worldSpeed);
 	void Shoot();
 	void paint(QPainter& painter) const;
 
@@ -29,20 +27,12 @@ public:
 	float getyvel() const  { return yVel; }
 	void setyvel(float vel) { yVel = vel; }
 
-	void startMoveWithWorld(float vel) { worldSpeed = vel; }
-	void stopMoveWithWorld() { worldSpeed = 0; }
-
-
 	int getYPos() const{ return playerRect->y(); }
 	int getXPos() const{ return playerRect->x(); }
 	QRect* getRect() const { return playerRect; }		
 
-	void keyPressEvent(QKeyEvent *e) { _keys[e->key()] = true; }
-	void keyReleaseEvent(QKeyEvent* e) { _keys[e->key()] = false; }
 	void enemyPlayerHit() { enemyHit = true; }
 	bool getEnemyHit() const{ return enemyHit; }
-
-	QMap<int, bool> _keys;
 
 	void playerDead(); 
 	void Reset();
@@ -54,8 +44,7 @@ private:
 	QPixmap* playerTexture;
 	QRect* playerRect;
 
-	float yVel;
-	float worldSpeed;
+	float yVel;	//lokal Y
 
 	double xVel;	//Velocity of player
 	double moveXSpeed;
@@ -64,8 +53,6 @@ private:
 
 	std::vector<Shot*> _shots;
 
-	bool moveLeft;
-	bool moveRight;
 	bool enemyHit = false;
 
 };
