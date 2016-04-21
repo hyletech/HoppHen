@@ -72,6 +72,7 @@ void WorldManager::Update()
 				if (_enemies[i]->getRect()->contains(player->getShots()[e]->getRect().x(), player->getShots()[e]->getRect().y()))
 				{
 					_enemies.erase(_enemies.begin() + i);
+					initEnemies();
 				}
 			}
 		}

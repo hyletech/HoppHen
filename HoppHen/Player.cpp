@@ -103,7 +103,7 @@ void Player::update()
 
 void Player::Shoot()
 {
-	Shot* shot = new Shot(playerRect->x(), playerRect->y());
+	Shot* shot = new Shot(playerRect->x() + 12.5, playerRect->y() - (P_HEIGHT/2));
 	_shots.push_back(shot);
 }
 
