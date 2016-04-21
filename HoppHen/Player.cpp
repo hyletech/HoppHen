@@ -47,12 +47,6 @@ void Player::MoveDampen()
 		xVel = 0;
 }
 
-//Ändrar spelarens aniskte till "ett dött ansikte"
-void Player::playerDead()
-{
-	playerTexture = new QPixmap("EivindDead.png");
-}
-
 void Player::update(int _worldSpeed)
 {
 	//Uppdaterar spelaren position
@@ -106,6 +100,13 @@ void Player::Reset()
 	playerRect->moveTopLeft(QPoint(P_START_POS_X, P_START_POS_Y));
 	playerTexture = new QPixmap("Eivind.png");
 	enemyHit = false;
+}
+
+void Player::enemyPlayerHit()
+{
+	enemyHit = true;
+	//Ändrar spelarens aniskte till "ett dött ansikte"
+	playerTexture = new QPixmap("EivindDead.png");
 }
 
 std::vector<Shot*>& Player::getShots()

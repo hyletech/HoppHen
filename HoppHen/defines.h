@@ -44,4 +44,4 @@
 //MaxBoundary
 #define MAX_TOP_BONDARY	-200
 
-#define MOVE_WORLD		1
+#define SHOT_SPEED		-1

@@ -23,19 +23,14 @@ WorldManager::WorldManager(Player* _player, ScoreManager* _scoreManager)
 
 void WorldManager::Update()
 {
-	//Random
-	random_device rd;
-	mt19937 gen(rd());
-	uniform_int_distribution<> dis(10, 530);
-
 	//Move world
-	if (player->getYPos() > 0)
-		worldSpeed = -((player->getYPos() - W_HEIGHT) * 2)*0.003;
+	if (player->getRect()->y() > 0)
+		worldSpeed = -((player->getRect()->y() - W_HEIGHT) * 2)*0.003;
 
 
 
 	// (sätter till förlorarstate?) yup
-	if (player->getYPos() > bottomBoundary)
+	if (player->getRect()->y() > bottomBoundary)
 	{
 		lose = true;
 	}
@@ -43,7 +38,7 @@ void WorldManager::Update()
 	//Gör att player flyttas med i världen
 	player->update(worldSpeed);
 
-	//Uppdatera plattformerna, samt hitcheck med spelare och plattform
+	//Kontrollera vanliga plattformar
 	for (int i = 0; i < _platforms.size(); i++)
 	{
 		_platforms[i]->startMove(worldSpeed);
@@ -52,8 +47,22 @@ void WorldManager::Update()
 		//Flyttar plattformen om den går under bottomboundary
 		if (_platforms[i]->getRect().y() > bottomBoundary)
 		{
-			int xPos = dis(gen);
-			_platforms[i]->setPos(topBoundary, xPos);
+			_platforms.erase(_platforms.begin() + i);
+			initPlatforms(topBoundary);
+		}
+	}
+
+	//Kontrollera breakable plattformar
+	for (int i = 0; i < _breakablePlatforms.size(); i++)
+	{
+		_breakablePlatforms[i]->startMove(worldSpeed);
+		_breakablePlatforms[i]->update(player);
+
+		//Flyttar plattformen om den går under bottomboundary
+		if (_breakablePlatforms[i]->getRect().y() > bottomBoundary)
+		{
+			_breakablePlatforms.erase(_breakablePlatforms.begin() + i);
+			initPlatforms(topBoundary);
 		}
 	}
 
@@ -98,20 +107,9 @@ void WorldManager::Update()
 	{
 		topBoundary = -scoreManager->GetScore();
 	}
-
-	
 }
 
 void WorldManager::resetWorld()
-{
-	initPlatforms();
- 	initEnemies();
-	ground->Reset();
-	player->Reset();
-	worldSpeed = 0;
-}
-
-void WorldManager::initPlatforms()
 {
 	//Tar bort ev platformar
 	if (!_platforms.size() == 0)
@@ -119,13 +117,35 @@ void WorldManager::initPlatforms()
 		for_each(_platforms.begin(), _platforms.end(), std::default_delete<Platform>());
 		_platforms.clear();
 	}
-
-	//Skapar nya platforms och lägger till i vector
 	for (int i = 0; i < PF_NUM_OF_PLATFORMS; i++)
 	{
-		int xPos = rand() % (W_WIDTH - PF_WIDTH - E_PADDING) + 1;
-		int yPos = W_HEIGHT - (i * 100) - 200;
-		Platform* p = new Platform(xPos, yPos);
+		int yPos = W_HEIGHT - (i * 100) - 200; 
+		initPlatforms(yPos);
+	}
+ 	initEnemies();
+	ground->Reset();
+	player->Reset();
+	worldSpeed = 0;
+}
+
+void WorldManager::initPlatforms(int _yPos)
+{
+	//Random
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_int_distribution<> dis(10, 530);
+	int xPos = dis(gen);
+
+	uniform_int_distribution<> dis1(0,1);
+	int rand = dis1(gen);
+	if (rand == 1)
+	{
+		Platform* p = new Platform(xPos, _yPos);
+		_platforms.push_back(p);
+	}
+	else
+	{
+		PlatformBreakable* p = new PlatformBreakable(xPos, _yPos);
 		_platforms.push_back(p);
 	}
 }

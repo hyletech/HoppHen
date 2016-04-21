@@ -9,14 +9,9 @@ Shot::Shot(int xPos, int yPos)
 
 }
 
-void Shot::paintEvent(QPaintEvent* e)
-{
-
-}
-
 void Shot::update()//Player* player, Enemy* enemy)
 {
-	shotRect->moveBottom(shotRect->y() + _yVel);
+	shotRect->moveBottom(shotRect->y() + SHOT_SPEED);
 }
 	
 

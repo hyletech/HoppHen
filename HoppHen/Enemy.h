@@ -11,13 +11,10 @@ public:
 	Enemy(int height);
 	~Enemy();
 
-	void initialize();
 	void update(Player* _player);
-	void EnemyDead();
 	void paint(QPainter& painter) const;
 
 	void startMove(float vel) { yVel = vel; }
-	void stopMove() { yVel = 0; }
 	void setPos(const int _newY, const int _newX);
 
 	QRect* getRect() { return enemyRect; }
@@ -27,9 +24,6 @@ private:
 	QRect* enemyRect;
 
 	Player* player;
-	
-	int xPos;
-	int yPos;
 
 	float yVel;
 	float xVel;

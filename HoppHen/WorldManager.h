@@ -7,6 +7,7 @@
 #include <ScoreManager.h>
 #include <iostream>
 #include <random>
+#include "PlatformBreakable.h"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ public:
 	WorldManager(Player* _player, ScoreManager* _scoreManager);
 	~WorldManager();
 
-	void initPlatforms();
+	void initPlatforms(int _yPos);
 	void initEnemies();
 
 	void Update();
@@ -28,6 +29,7 @@ public:
 private:
 	std::vector<Enemy*> _enemies;
 	std::vector<Platform*> _platforms;
+	std::vector<PlatformBreakable*> _breakablePlatforms;
 
 	Ground* ground;
 	Player* player;

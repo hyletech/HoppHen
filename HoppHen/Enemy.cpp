@@ -2,9 +2,7 @@
 
 Enemy::Enemy(int height)
 {
-	xPos = E_START_POS_X;
-	yPos = height;
-	enemyRect = new QRect(xPos, yPos, E_WIDTH, E_HEIGHT);
+	enemyRect = new QRect(E_START_POS_X, height, E_WIDTH, E_HEIGHT);
 	enemyTexture = new QPixmap("monster1.png"); //Fixa bild
 
 	yVel = 0;
@@ -20,11 +18,6 @@ Enemy::~Enemy()
 	delete enemyTexture;
 }
 
-void Enemy::initialize()
-{
-
-}
-
 void Enemy::update(Player* player)
 {
 	if (enemyRect->right() > W_WIDTH - E_PADDING && xVel > 0)
@@ -37,11 +30,10 @@ void Enemy::update(Player* player)
 	enemyRect->moveBottom(enemyRect->bottom() + yVel);
 
 	//Om player/enemy-kollision
-	if (enemyRect->contains(player->getXPos(), player->getYPos()))
+	if (enemyRect->contains(player->getRect()->x(), player->getRect()->y()))
 	{
 		player->enemyPlayerHit();
 		player->setyvel(5);
-		player->playerDead();
 	}
 }
 
@@ -50,12 +42,6 @@ void Enemy::setPos(const int _newY, const int _newX)
 	enemyRect->moveBottom(_newY);
 	enemyRect->moveLeft(_newX);
 }
-
-void Enemy::EnemyDead()
-{
-	
-}
-
 
 void Enemy::paint(QPainter& painter) const
 {

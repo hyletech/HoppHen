@@ -26,15 +26,12 @@ public:
 
 	float getyvel() const  { return yVel; }
 	void setyvel(float vel) { yVel = vel; }
-
-	int getYPos() const{ return playerRect->y(); }
-	int getXPos() const{ return playerRect->x(); }
 	QRect* getRect() const { return playerRect; }		
 
-	void enemyPlayerHit() { enemyHit = true; }
+	//Fiende col med player
+	void enemyPlayerHit();
 	bool getEnemyHit() const{ return enemyHit; }
 
-	void playerDead(); 
 	void Reset();
 	std::vector<Shot*>& getShots();
 
