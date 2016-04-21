@@ -14,6 +14,9 @@
     <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="Shot.cpp" />
     <ClCompile Include="WorldManager.cpp" />
+    <ClCompile Include="PlatformNormal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enemy.h" />
@@ -27,6 +30,9 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="WorldManager.h" />
+    <ClInclude Include="PlatformNormal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="hopphen.h" />
@@ -54,5 +60,17 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="HiScores.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;cxx;c;def</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
   </ItemGroup>
 </Project>

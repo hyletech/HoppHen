@@ -9,7 +9,7 @@ class Platform
 public:
 	Platform(int xPos, int yPos);
 
-	void update(Player* player);
+	virtual void update(Player* player) = 0;
 	void paint(QPainter& painter) const;
 	QRect getRect() const		{ return *platformRect; }
 	void setPos(const int _newY, const int _newX);

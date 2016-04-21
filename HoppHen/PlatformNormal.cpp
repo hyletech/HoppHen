@@ -1,12 +1,11 @@
-#include "PlatformBreakable.h"
+#include "PlatformNormal.h"
 
-
-PlatformBreakable::PlatformBreakable(int xPos, int yPos): Platform(xPos, yPos)
+PlatformNormal::PlatformNormal(int xPos, int yPos) : Platform(xPos, yPos)
 {
-	platformTexture = new QPixmap("pizzahutBreak.png");
+
 }
 
-void PlatformBreakable::update(Player* player)
+void PlatformNormal::update(Player* player)
 {
 	if (!player->getEnemyHit())
 	{
@@ -17,10 +16,7 @@ void PlatformBreakable::update(Player* player)
 			if ((player->getRect()->bottom() > platformRect->top()) && (player->getyvel() >= 0))
 			{
 				player->setyvel(-15);
-				setPos(1500, platformRect->y());
 			}
 		}
 	}
 }
-
-

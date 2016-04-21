@@ -9,6 +9,7 @@
 #include <iostream>
 #include <random>
 #include "PlatformBreakable.h"
+#include "PlatformNormal.h"
 
 using namespace std;
 

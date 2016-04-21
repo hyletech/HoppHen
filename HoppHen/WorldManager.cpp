@@ -142,7 +142,7 @@ void WorldManager::initPlatforms(int _yPos)
 	int rand = dis1(gen);
 	if (rand == 1)
 	{
-		Platform* p = new Platform(xPos, _yPos);
+		PlatformNormal* p = new PlatformNormal(xPos, _yPos);
 		_platforms.push_back(p);
 	}
 	else
