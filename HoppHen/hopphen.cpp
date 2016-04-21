@@ -91,6 +91,7 @@ void HoppHen::update() //hitcheck
 		if (_keys[Qt::Key_P])
 			gameState = Pause;
 
+
 		//Stäng av spelet
 		if (_keys[Qt::Key_Escape])
 			close();

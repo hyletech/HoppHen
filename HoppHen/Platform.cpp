@@ -32,10 +32,7 @@ void Platform::setPos(const int _newY, const int _newX)
 void Platform::paint(QPainter& painter) const
 {
 	painter.drawPixmap(platformRect->x(), platformRect->y(), *platformTexture);
-	//QBrush br;
-	//br.setColor(Qt::blue);
-	//painter.setBrush(br);
-	//painter.drawRect(platformRect->x(), platformRect->y(), PF_WIDTH, PF_HEIGHT);
+	
 }
 
 
