@@ -5,7 +5,6 @@
 #include "ui_hopphen.h"
 #include <QMouseEvent>
 #include "includes.h"
-class WorldManager;
 class HoppHen : public QMainWindow
 {
 	Q_OBJECT
@@ -13,10 +12,7 @@ class HoppHen : public QMainWindow
 public:
 	enum GameState{Intro, Lose, Game, Pause };
 
-	//Kontruktor och link
-	HoppHen(QWidget *parent = 0) : _worldManager(0){}
-	(void setLink(WorldManager* _wm){ _worldManager = _wm; };
-
+	HoppHen(QWidget *parent = 0);
 	~HoppHen();
 
 	void paintEvent(QPaintEvent * e);
