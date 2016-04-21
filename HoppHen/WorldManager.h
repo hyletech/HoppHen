@@ -34,7 +34,6 @@ private:
 	std::vector<Enemy*> _enemies;
 	std::vector<Platform*> _platforms;
 
-
 	Ground* ground;
 	Player* player;
 	ScoreManager* scoreManager;
