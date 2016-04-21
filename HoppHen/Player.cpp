@@ -108,6 +108,7 @@ void Player::Shoot()
 {
 	Shot* shot = new Shot(playerRect->x(), playerRect->y() - 60);
 	_shots.push_back(shot);
+	//QTimer::singleShot(1000, []() { Shoot(); });
 }
 
 

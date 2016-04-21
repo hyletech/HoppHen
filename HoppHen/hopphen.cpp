@@ -75,7 +75,8 @@ void HoppHen::update() //hitcheck
 			_player->MoveLeft();
 		else
 			_player->MoveDampen();
-
+		
+		//Om spelaren skjuter
 		if (_keys[Qt::Key_Space] && !keyPress)
 		{
 			_player->Shoot();
