@@ -73,6 +73,7 @@ void WorldManager::Update()
 				{
 					_enemies.erase(_enemies.begin() + i);
 					initEnemies();
+					player->getShots().erase(player->getShots().begin() + e);
 				}
 			}
 		}
@@ -92,6 +93,7 @@ void WorldManager::Update()
 		topBoundary = -scoreManager->GetScore() * 0.1f;
 	}
 
+	
 }
 
 void WorldManager::resetWorld()

@@ -45,7 +45,7 @@ public:
 	void playerDead(); 
 	void Reset();
 	std::vector<Shot*>& getShots();
-	void destoyShots();
+
 private:
 	QPixmap* playerTexture;
 	QRect* playerRect;

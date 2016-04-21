@@ -97,7 +97,13 @@ void Player::update()
 	for (int i = 0; i < _shots.size(); i++)
 	{
 		_shots[i]->update();
+		if (_shots[i]->getRect().y() == (W_HEIGHT - S_HEIGHT))
+		{
+			_shots.erase(_shots.begin() + i);
+		}
 	}
+
+	
 }
 
 
@@ -121,10 +127,6 @@ std::vector<Shot*>& Player::getShots()
 	return _shots;
 }
 
-//void Player::destoyShots()
-//{
-//	_shots.erase(_shots.begin() +)
-//}
 
 
 void Player::paint(QPainter& painter) const

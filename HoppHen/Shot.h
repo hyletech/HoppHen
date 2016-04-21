@@ -34,7 +34,7 @@ private:
 
 	QPixmap* shotTexture;
 	QRect* shotRect;
-	float _yVel = -10;
+	float _yVel = -1;
 
 	int xPos;
 	int yPos;
