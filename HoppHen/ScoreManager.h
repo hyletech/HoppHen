@@ -16,6 +16,7 @@ public:
 	void WriteHiScore(int _score) const;
 	void Update();
 	void AddScore(float _scoreToAdd);
+	int GetScore(){ return score; };
 	void Reset();
 	void paint(QPainter& painter) const;
 
