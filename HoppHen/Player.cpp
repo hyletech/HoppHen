@@ -1,5 +1,7 @@
 #include "Player.h"
 #include <QtGui/QKeyEvent>
+#include <QTimer>
+#include <initializer_list>
 
 
 Player::Player()

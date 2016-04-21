@@ -7,12 +7,7 @@ class PlatformBreakable : public Platform
 {
 	public:
 	
-		PlatformBreakable(int xPos, int Ypos, Platform *platform);
+		PlatformBreakable(int xPos, int Ypos);
+		void update(Player* player);
 		~PlatformBreakable(){}
-
-		void paint(QPainter & painter);
-		void disappearEffect();
-
-private:
-		Platform* _platform;
 };

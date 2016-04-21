@@ -64,7 +64,9 @@ void WorldManager::Update()
 			_breakablePlatforms.erase(_breakablePlatforms.begin() + i);
 			initPlatforms(topBoundary);
 		}
+
 	}
+
 
 	//Flytta och uppdatera fiender samt kontrollera hitcheck
 	for (int i = 0; i < _enemies.size(); i++)

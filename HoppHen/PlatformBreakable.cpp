@@ -1,26 +1,26 @@
 #include "PlatformBreakable.h"
 
 
-PlatformBreakable::PlatformBreakable(int xPos, int yPos, Platform *platform): Platform(xPos, yPos)
+PlatformBreakable::PlatformBreakable(int xPos, int yPos): Platform(xPos, yPos)
 {
-	_platform = platform;
+	platformTexture = new QPixmap("pizzahutBreak.png");
 }
 
-void PlatformBreakable::paint(QPainter& painter)
+void PlatformBreakable::update(Player* player)
 {
-	
-
+	if (!player->getEnemyHit())
+	{
+		//Om player/platform-kollision
+		if (platformRect->contains(player->getRect()->bottomLeft()) || platformRect->contains(player->getRect()->bottomRight()))
+		{
+			//Om kommer ovanpå med pos yVel (nedåt)
+			if ((player->getRect()->bottom() > platformRect->top()) && (player->getyvel() >= 0))
+			{
+				player->setyvel(-15);
+				platformRect->moveLeft(1500);
+			}
+		}
+	}
 }
 
-
-
-
-
-
-
-void PlatformBreakable::disappearEffect()
-{
-	//lägga till något i stil med: if( brytbar platform = hit)
-	//                                 delete just  den platformen vid nästa uppdate
-}
 

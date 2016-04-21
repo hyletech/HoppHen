@@ -1,10 +1,8 @@
 #pragma once
 #include <qrect.h>
-#include "defines.h"
 #include <QPainter>
 #include "Player.h"
-#include <stdlib.h>
-#include <ctime>
+
 
 class Platform
 {
@@ -20,5 +18,5 @@ public:
 protected:
 	QPixmap* platformTexture;
 	QRect* platformRect;
-
+	
 };

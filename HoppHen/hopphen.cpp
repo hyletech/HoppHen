@@ -97,6 +97,7 @@ void HoppHen::update() //hitcheck
 		else if (!_keys[Qt::Key_P])
 			keyPressPause = false;
 
+
 		//Stäng av spelet
 		if (_keys[Qt::Key_Escape])
 			close();

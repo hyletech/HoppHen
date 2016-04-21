@@ -1,5 +1,6 @@
 #pragma once
 #include "Platform.h"
+#include "PlatformBreakable.h"
 #include "Enemy.h"
 #include "Ground.h"
 #include <math.h>
