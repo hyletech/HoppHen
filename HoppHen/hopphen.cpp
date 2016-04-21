@@ -92,6 +92,11 @@ void HoppHen::update() //hitcheck
 		if (_keys[Qt::Key_Escape])
 			close();
 
+		if (_bgYPos < BG_MAXPOS)
+		{
+			_bgYPos = (_scoreManager->GetScore() * 0.1f) + BG_MINPOS;
+		}
+
 		repaint();
 		break;
 
@@ -107,6 +112,7 @@ void HoppHen::update() //hitcheck
 			gameState = Game;
 			_worldManager->resetWorld();
 			_scoreManager->Reset();
+			_bgYPos = BG_MINPOS;
 		}
 		break;
 
