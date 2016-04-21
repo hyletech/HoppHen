@@ -90,7 +90,7 @@ void WorldManager::Update()
 	//ändra top boundary och bakgrund
 	if (topBoundary > MAX_TOP_BONDARY)
 	{
-		topBoundary = -scoreManager->GetScore() * 0.1f;
+		topBoundary = -scoreManager->GetScore();
 	}
 
 	

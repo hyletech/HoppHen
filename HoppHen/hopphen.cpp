@@ -8,7 +8,9 @@ HoppHen::HoppHen(QWidget *parent)
 
 	_player = new Player();
 	
+	//Score
 	_scoreManager = new ScoreManager();
+	scoreTab = new QPixmap("ScoreTab.png");
 
 	_worldManager = new WorldManager(_player, _scoreManager);
 
@@ -146,6 +148,17 @@ void HoppHen::LoseGame()
 void HoppHen::paintEvent(QPaintEvent * e)
 {
 	QPainter p(this);
+	QBrush br;
+	br.setColor(Qt::blue);
+	p.setBrush(br);
+
+	QFont font;
+	font.setPointSize(24);
+
+	QPen pen(QColor("#FFF"));
+	p.setPen(pen);
+	p.setFont(font);
+
 	switch (gameState)
 	{
 	case Intro:
@@ -159,6 +172,9 @@ void HoppHen::paintEvent(QPaintEvent * e)
 		p.drawPixmap(0, _bgYPos, *_background);
 
 		_worldManager->paint(p);
+		p.drawPixmap(0, 0, *scoreTab);
+		p.drawText(220, 45, "Height:");
+		p.drawText(340, 45, QString::number(_scoreManager->GetScore()));
 		break;
 
 	case Lose:

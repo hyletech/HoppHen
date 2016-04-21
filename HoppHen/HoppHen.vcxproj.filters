@@ -160,6 +160,9 @@
     <Image Include="IntroScreen.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="ScoreTab.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="HoppHen.rc" />

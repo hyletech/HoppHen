@@ -61,19 +61,7 @@ void ScoreManager::Reset()
 
 void ScoreManager::paint(QPainter& painter) const
 {
-	QBrush br;
-	br.setColor(Qt::blue);
-	painter.setBrush(br);
 
-	QFont font;
-	font.setPointSize(24);
-	
-	QPen pen(QColor("#FFF"));
-	painter.setPen(pen);
-
-	
-	//font.setWeight(QFont::DemiBold);
-	painter.setFont(font);
 
 	painter.drawPixmap(0,0, W_WIDTH , W_HEIGHT, *darkenedLose);
 	painter.drawPixmap(0, scoreTextY, W_WIDTH, W_HEIGHT, *scoreTexture);

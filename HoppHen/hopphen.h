@@ -30,6 +30,7 @@ private:
 	QTimer* _timer;
 	QPixmap* _background;
 	QPixmap* introTexture;
+	QPixmap* scoreTab;
 	GameState gameState;
 
 	//Object

@@ -175,6 +175,7 @@
     <Image Include="EivindDead.png" />
     <Image Include="IntroScreen.png" />
     <Image Include="monster-clip-art-flying-monster-clipart.png" />
+    <Image Include="ScoreTab.png" />
     <Image Include="shot.png" />
   </ItemGroup>
   <ItemGroup>
