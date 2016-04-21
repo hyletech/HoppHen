@@ -5,14 +5,12 @@ WorldManager::WorldManager(Player* _player, ScoreManager* _scoreManager)
 {
 	srand(time(NULL));
 
-	initPlatforms();
-	initEnemies();
-	initWorld();
-
 	player = _player;
 	scoreManager = _scoreManager;
 	ground = new Ground();
 
+	resetWorld();
+	initEnemies();
 
 }
 
@@ -26,6 +24,8 @@ void WorldManager::Update()
 	//Move world
 	if (player->getYPos() > 0)
 		worldSpeed = -((player->getYPos() - W_HEIGHT) * 2)*0.003;
+
+
 
 	// (sätter till förlorarstate?) yup
 	if (player->getYPos() > bottomBoundary)
@@ -60,7 +60,7 @@ void WorldManager::Update()
 		//Flyttar Fienden om den går under bottomboundary
 		if (_enemies[i]->getRect()->y() > bottomBoundary)
 		{
-			_enemies.erase(_enemies.begin()+i);
+			_enemies.erase(_enemies.begin() + i);
 			initEnemies();
 		}
 
@@ -84,6 +84,13 @@ void WorldManager::Update()
 
 	//Lägg till score
 	scoreManager->AddScore(worldSpeed);
+
+	//ändra top boundary och bakgrund
+	if (topBoundary > MAX_TOP_BONDARY)
+	{
+		topBoundary = -scoreManager->GetScore() * 0.1f;
+	}
+
 }
 
 void WorldManager::resetWorld()
@@ -116,8 +123,13 @@ void WorldManager::initPlatforms()
 
 void WorldManager::initEnemies()
 {
-		Enemy* e = new Enemy(topBoundary);
-		_enemies.push_back(e);
+	if (!_enemies.size() == 0)
+	{
+		for_each(_enemies.begin(), _enemies.end(), std::default_delete<Enemy>());
+		_enemies.clear();
+	}
+	Enemy* e = new Enemy(topBoundary);
+	_enemies.push_back(e);
 }
 
 void WorldManager::initWorld()

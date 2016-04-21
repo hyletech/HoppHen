@@ -41,5 +41,7 @@
 #define S_WIDTH			15
 #define S_HEIGHT		45
 
+//MaxBoundary
+#define MAX_TOP_BONDARY	-200
 
 #define MOVE_WORLD		1
