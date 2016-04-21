@@ -9,6 +9,13 @@ WorldManager::WorldManager(Player* _player, ScoreManager* _scoreManager)
 	scoreManager = _scoreManager;
 	ground = new Ground();
 
+	//WorldMovement
+	worldSpeed = 0;
+
+	//Boundaries
+	bottomBoundary = W_HEIGHT + 100;
+	topBoundary = -100;
+
 	resetWorld();
 	initEnemies();
 
@@ -34,8 +41,7 @@ void WorldManager::Update()
 	}
 
 	//Gör att player flyttas med i världen
-	player->startMoveWithWorld(worldSpeed);
-	player->update();
+	player->update(worldSpeed);
 
 	//Uppdatera plattformerna, samt hitcheck med spelare och plattform
 	for (int i = 0; i < _platforms.size(); i++)
@@ -100,9 +106,9 @@ void WorldManager::resetWorld()
 {
 	initPlatforms();
  	initEnemies();
-	initWorld();
 	ground->Reset();
 	player->Reset();
+	worldSpeed = 0;
 }
 
 void WorldManager::initPlatforms()
@@ -133,16 +139,6 @@ void WorldManager::initEnemies()
 	}
 	Enemy* e = new Enemy(topBoundary - 500);
 	_enemies.push_back(e);
-}
-
-void WorldManager::initWorld()
-{
-	//WorldMovement
-	worldSpeed = 0;
-
-	//Boundaries
-	bottomBoundary = W_HEIGHT + 100;
-	topBoundary = -100;
 }
 
 void WorldManager::paint(QPainter& painter) const

@@ -11,7 +11,6 @@ public:
 	~Ground();
 
 	void startMove(float vel) { _yvel = vel; }
-	void stopMove() { _yvel = 0; }
 
 	void update(Player* _player);
 	void paint(QPainter& painter) const;

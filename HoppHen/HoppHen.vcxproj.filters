@@ -59,9 +59,6 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PlatformBreakable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -74,6 +71,18 @@
     <ClCompile Include="Shot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
+=======
+    <ClCompile Include="GeneratedFiles\Debug\moc_Shot.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Shot.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+>>>>>>> 7e69c9ef454760b8439a2481295458557f65422f
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="hopphen.h">

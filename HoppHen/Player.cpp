@@ -10,14 +10,10 @@ Player::Player()
 	playerRect = new QRect(P_START_POS_X, P_START_POS_Y, P_WIDTH, P_HEIGHT);
 
 	yVel = 2;
-	worldSpeed = 0;
 	xVel = 0;
 	moveXSpeed = 0.2;
 	maxXSpeed = 7;
 	xDampen = 0.2;
-
-	moveLeft = false;
-	moveRight = false;
 }
 
 
@@ -59,13 +55,7 @@ void Player::playerDead()
 	playerTexture = new QPixmap("EivindDead.png");
 }
 
-void Player::initialize()
-{
-	//Ändrar spelarens startposition
-	playerRect->moveTopLeft(QPoint(P_START_POS_X, P_START_POS_Y));
-}
-
-void Player::update()
+void Player::update(int _worldSpeed)
 {
 	//Uppdaterar spelaren position
 	int newX = playerRect->x() + xVel;
@@ -79,7 +69,7 @@ void Player::update()
 		playerRect->moveLeft(W_WIDTH - P_WIDTH / 2);
 
 	//Gravitation
-	playerRect->moveBottom(playerRect->bottom() + yVel + worldSpeed);
+	playerRect->moveBottom(playerRect->bottom() + yVel + _worldSpeed);
 	//Om hastighet är större än 6 nedåt
 	if (yVel > 6)
 		yVel = 6;
@@ -110,15 +100,12 @@ void Player::Shoot()
 {
 	Shot* shot = new Shot(playerRect->x(), playerRect->y() - 60);
 	_shots.push_back(shot);
-	
-
 }
 
 
 void Player::Reset()
 {
-	playerRect->moveLeft(P_START_POS_X);
-	playerRect->moveTop(P_START_POS_Y);
+	playerRect->moveTopLeft(QPoint(P_START_POS_X, P_START_POS_Y));
 	playerTexture = new QPixmap("Eivind.png");
 	enemyHit = false;
 }
@@ -127,7 +114,6 @@ std::vector<Shot*>& Player::getShots()
 {
 	return _shots;
 }
-
 
 
 void Player::paint(QPainter& painter) const
