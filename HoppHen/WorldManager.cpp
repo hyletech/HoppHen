@@ -51,7 +51,7 @@ void WorldManager::Update()
 		}
 	}
 
-	//Flytta och uppdatera fiender
+	//Flytta och uppdatera fiender samt kontrollera hitcheck
 	for (int i = 0; i < _enemies.size(); i++)
 	{
 		_enemies[i]->startMove(worldSpeed);
@@ -63,6 +63,19 @@ void WorldManager::Update()
 			_enemies.erase(_enemies.begin()+i);
 			initEnemies();
 		}
+
+		if (player->getShots().size() > 0)
+		{
+
+			for (int e = 0; e < player->getShots().size(); e++)
+			{
+				if (_enemies[i]->getRect()->contains(player->getShots()[e]->getRect().x(), player->getShots()[e]->getRect().y()))
+				{
+					_enemies.erase(_enemies.begin() + i);
+				}
+			}
+		}
+		
 	}
 
 	//Uppdatera och flytta mark

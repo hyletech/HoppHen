@@ -116,6 +116,16 @@ void Player::Reset()
 	playerTexture = new QPixmap("Eivind.png");
 }
 
+std::vector<Shot*>& Player::getShots()
+{
+	return _shots;
+}
+
+//void Player::destoyShots()
+//{
+//	_shots.erase(_shots.begin() +)
+//}
+
 
 void Player::paint(QPainter& painter) const
 {

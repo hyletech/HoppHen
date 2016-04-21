@@ -18,8 +18,11 @@ public:
 	void paintEvent(QPaintEvent * e);
 	void update();
 	void paint(QPainter& painter) const;
+	
+
 	QRect getRect() const		{ return *shotRect; }
 
+	
 
 	QMap<int, bool> _keys;
 

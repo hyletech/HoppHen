@@ -76,10 +76,13 @@ void HoppHen::update() //hitcheck
 		else
 			_player->MoveDampen();
 
-		if (_keys[Qt::Key_Space])
+		if (_keys[Qt::Key_Space] && !keyPress)
 		{
 			_player->Shoot();
+			keyPress = true;
 		}
+		else if (!_keys[Qt::Key_Space])
+			keyPress = false;
 
 		//Pause
 		if (_keys[Qt::Key_P])
