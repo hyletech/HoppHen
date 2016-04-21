@@ -33,18 +33,22 @@ public:
 	void stopMoveWithWorld() { worldSpeed = 0; }
 
 
-	int getYPos(){ return playerRect->y(); }
-	int getXPos(){ return playerRect->x(); }
-	QRect* getRect() { return playerRect; }		
+	int getYPos() const{ return playerRect->y(); }
+	int getXPos() const{ return playerRect->x(); }
+	QRect* getRect() const { return playerRect; }		
 
-	void Player::keyPressEvent(QKeyEvent *e) { _keys[e->key()] = true; }
-	void Player::keyReleaseEvent(QKeyEvent* e) { _keys[e->key()] = false; }
-	
+	void keyPressEvent(QKeyEvent *e) { _keys[e->key()] = true; }
+	void keyReleaseEvent(QKeyEvent* e) { _keys[e->key()] = false; }
+	void enemyPlayerHit() { enemyHit = true; }
+	bool getEnemyHit() const{ return enemyHit; }
+
 	QMap<int, bool> _keys;
 
 	void playerDead(); 
 	void Reset();
 	std::vector<Shot*>& getShots();
+
+	
 
 private:
 	QPixmap* playerTexture;
@@ -62,5 +66,7 @@ private:
 
 	bool moveLeft;
 	bool moveRight;
+	bool enemyHit = false;
+
 };
 

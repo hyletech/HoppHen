@@ -19,7 +19,6 @@ Player::Player()
 }
 
 
-
 //Destruktor
 Player::~Player()
 {
@@ -102,8 +101,6 @@ void Player::update()
 			_shots.erase(_shots.begin() + i);
 		}
 	}
-
-	
 }
 
 
@@ -114,12 +111,12 @@ void Player::Shoot()
 }
 
 
-
 void Player::Reset()
 {
 	playerRect->moveLeft(P_START_POS_X);
 	playerRect->moveTop(P_START_POS_Y);
 	playerTexture = new QPixmap("Eivind.png");
+	enemyHit = false;
 }
 
 std::vector<Shot*>& Player::getShots()

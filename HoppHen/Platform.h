@@ -25,4 +25,5 @@ protected:
 	QPixmap* platformTexture;
 	QRect* platformRect;
 	float _yvel;
+
 };
