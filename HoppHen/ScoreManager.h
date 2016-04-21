@@ -24,10 +24,8 @@ private:
 	QPixmap* darkenedLose;
 	QPixmap* scoreTexture;
 
-	QTimer* timer;
 	float scoreTextY;
 	int score;
-
 
 	QRect* scoreRect;
 	QRect* hiScoreRect;

@@ -41,10 +41,9 @@ private:
 	QMap<int, bool> _keys;
 
 	float introTime;
-	bool _moveWorld;
-	float _worldSpeed;
 	int _bgYPos;
-	bool keyPress;
+	bool keyPressShoot;
+	bool keyPressPause;
 };
 
 #endif // HOPPHEN_H

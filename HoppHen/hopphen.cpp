@@ -35,7 +35,8 @@ HoppHen::HoppHen(QWidget *parent)
 	_timer->start(16);
 
 	//Keypress
-	keyPress = false;
+	keyPressShoot = false;
+	keyPressPause = false;
 }
 
 
@@ -79,17 +80,22 @@ void HoppHen::update() //hitcheck
 			_player->MoveDampen();
 		
 		//Om spelaren skjuter
-		if (_keys[Qt::Key_Space] && !keyPress)
+		if (_keys[Qt::Key_Space] && !keyPressShoot)
 		{
 			_player->Shoot();
-			keyPress = true;
+			keyPressShoot = true;
 		}
 		else if (!_keys[Qt::Key_Space])
-			keyPress = false;
+			keyPressShoot = false;
 
 		//Pause
-		if (_keys[Qt::Key_P])
+		if (_keys[Qt::Key_P] && !keyPressPause)
+		{
 			gameState = Pause;
+			keyPressPause = true;
+		}
+		else if (!_keys[Qt::Key_P])
+			keyPressPause = false;
 
 		//Stäng av spelet
 		if (_keys[Qt::Key_Escape])
@@ -122,23 +128,20 @@ void HoppHen::update() //hitcheck
 
 		//Pause
 	case Pause:
-		if (_keys[Qt::Key_P])
+		if (_keys[Qt::Key_P] && !keyPressPause)
+		{
 			gameState = Game;
+			keyPressPause = true;
+		}
+		else if (!_keys[Qt::Key_P])
+			keyPressPause = false;
+
 		break;
 
 	}
 }
 
 
-//void HoppHen::mouseMoveEvent(QMouseEvent* e)
-//{
-//	//rack->setPosition(e->x());
-//}
-//
-//void HoppHen::mousePressEvent(QMouseEvent* e)
-//{
-//
-//}
 
 void HoppHen::LoseGame()
 {
@@ -176,6 +179,17 @@ void HoppHen::paintEvent(QPaintEvent * e)
 		p.drawPixmap(0, 0, *scoreTab);
 		p.drawText(220, 45, "Height:");
 		p.drawText(340, 45, QString::number(_scoreManager->GetScore()));
+		break;
+		
+	case Pause:
+		//Bakgrund
+		p.drawPixmap(0, _bgYPos, *_background);
+
+		_worldManager->paint(p);
+		p.drawPixmap(0, 0, *scoreTab);
+		p.drawText(220, 45, "Height:");
+		p.drawText(340, 45, QString::number(_scoreManager->GetScore()));
+
 		break;
 
 	case Lose:

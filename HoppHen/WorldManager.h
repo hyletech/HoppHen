@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class WorldManager/*: public HoppHen*/
+class WorldManager
 {
 public:
 	WorldManager(Player* _player, ScoreManager* _scoreManager);
@@ -18,11 +18,6 @@ public:
 
 	void initPlatforms();
 	void initEnemies();
-	void initWorld();
-
-	float getScore()	const { return score; }
-	float getHeight()	const { return height; }
-//	void LoseGame() { HoppHen::LoseGame(); };
 
 	void Update();
 	void paint(QPainter& painter) const;
@@ -41,15 +36,5 @@ private:
 	//Boundaries
 	int bottomBoundary;
 	int topBoundary;
-
-	float speedDecrease;
-	float score;
-	float height;
 	float worldSpeed;
-
-	int platFormCount		= 10;
-	int platformYDistance	= 100;
-	int enemieCount			= 10;
-	int enemieYDistance		= 100;
-
 };
