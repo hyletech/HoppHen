@@ -12,10 +12,17 @@ WorldManager::WorldManager(Player* _player, ScoreManager* _scoreManager)
 	player = _player;
 	scoreManager = _scoreManager;
 	ground = new Ground();
+
+
 }
 
 void WorldManager::Update()
 {
+	//Random
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_int_distribution<> dis(10, 530);
+
 	//Move world
 	if (player->getYPos() > 0)
 		worldSpeed = -((player->getYPos() - W_HEIGHT) * 2)*0.003;
@@ -39,8 +46,7 @@ void WorldManager::Update()
 		//Flyttar plattformen om den går under bottomboundary
 		if (_platforms[i]->getRect().y() > bottomBoundary)
 		{
-			int randInt = 5830;
-			int xPos = (rand() * randInt) % (W_WIDTH - PF_WIDTH - E_PADDING) + 1;
+			int xPos = dis(gen);
 			_platforms[i]->setPos(topBoundary, xPos);
 		}
 	}
@@ -50,6 +56,13 @@ void WorldManager::Update()
 	{
 		_enemies[i]->startMove(worldSpeed);
 		_enemies[i]->update(player);
+
+		//Flyttar Fienden om den går under bottomboundary
+		if (_enemies[i]->getRect()->y() > bottomBoundary)
+		{
+			_enemies.erase(_enemies.begin()+i);
+			initEnemies();
+		}
 	}
 
 	//Uppdatera och flytta mark
@@ -90,21 +103,8 @@ void WorldManager::initPlatforms()
 
 void WorldManager::initEnemies()
 {
-	//Tar bort fiender om det finns
-	if (!_enemies.size() == 0)
-	{
-		for_each(_enemies.begin(), _enemies.end(), std::default_delete<Enemy>());
-		_enemies.clear();
-	}
-	
-	//Skapar nya enemies och lägger till i list
-	for (int i = 0; i < E_NUM_OF_ENEMIES; i++)
-	{
-		int yPos = -((i + 1) * 1500) + 1000;
-		Enemy* e = new Enemy(yPos);
+		Enemy* e = new Enemy(topBoundary);
 		_enemies.push_back(e);
-	}
-
 }
 
 void WorldManager::initWorld()

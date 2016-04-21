@@ -18,6 +18,7 @@ public:
 
 	void startMove(float vel) { yVel = vel; }
 	void stopMove() { yVel = 0; }
+	void setPos(const int _newY, const int _newX);
 
 	QRect* getRect() { return enemyRect; }
 

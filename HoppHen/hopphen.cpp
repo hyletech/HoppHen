@@ -12,10 +12,12 @@ HoppHen::HoppHen(QWidget *parent)
 
 	_worldManager = new WorldManager(_player, _scoreManager);
 
-	introTime = 20000;
+	//intro
+	introTexture = new QPixmap("IntroScreen.png");
+	introTime = 250;
 
 	//Starting gameState
-	gameState = Game;
+	gameState = Intro;
 
 	//Window
 	setFixedWidth(W_WIDTH);	
@@ -44,11 +46,12 @@ void HoppHen::update() //hitcheck
 
 		//Intro
 	case Intro:
-		introTime--;
-		if (introTime < 0)
-		{
-			gameState = Game;
-		}
+			_sleep(1);
+			introTime--;
+			if (introTime < 0)
+			{
+				gameState = Game;
+			}
 
 		break;
 
@@ -136,6 +139,12 @@ void HoppHen::paintEvent(QPaintEvent * e)
 	QPainter p(this);
 	switch (gameState)
 	{
+	case Intro:
+		//Intro
+		p.drawPixmap(0, 0, *introTexture);
+
+		break;
+
 	case Game:
 		//Bakgrund
 		p.drawPixmap(0, _bgYPos, *_background);

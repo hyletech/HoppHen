@@ -173,6 +173,7 @@
     <Image Include="..\..\..\..\Visual Studio 2015\Projects\SpelProjekt\SpelProjekt\SpelProjektContent\Images\BackGround.png" />
     <Image Include="bitmap1.bmp" />
     <Image Include="EivindDead.png" />
+    <Image Include="IntroScreen.png" />
     <Image Include="monster-clip-art-flying-monster-clipart.png" />
     <Image Include="shot.png" />
   </ItemGroup>

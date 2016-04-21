@@ -5,6 +5,10 @@
 #include <math.h>
 #include <memory>
 #include <ScoreManager.h>
+#include <iostream>
+#include <random>
+
+using namespace std;
 
 class WorldManager/*: public HoppHen*/
 {

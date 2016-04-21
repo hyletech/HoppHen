@@ -44,6 +44,12 @@ void Enemy::update(Player* player)
 	}
 }
 
+void Enemy::setPos(const int _newY, const int _newX)
+{
+	enemyRect->moveBottom(_newY);
+	enemyRect->moveLeft(_newX);
+}
+
 void Enemy::EnemyDead()
 {
 	

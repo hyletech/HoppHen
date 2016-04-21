@@ -30,6 +30,7 @@ private:
 	Ui::HoppHenClass ui;
 	QTimer* _timer;
 	QPixmap* _background;
+	QPixmap* introTexture;
 	GameState gameState;
 
 	//Object
