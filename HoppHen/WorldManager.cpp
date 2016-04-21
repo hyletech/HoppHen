@@ -129,7 +129,7 @@ void WorldManager::initEnemies()
 		for_each(_enemies.begin(), _enemies.end(), std::default_delete<Enemy>());
 		_enemies.clear();
 	}
-	Enemy* e = new Enemy(topBoundary - 400);
+	Enemy* e = new Enemy(topBoundary - 500);
 	_enemies.push_back(e);
 }
 
