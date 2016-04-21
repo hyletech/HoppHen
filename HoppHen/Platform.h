@@ -18,5 +18,5 @@ public:
 protected:
 	QPixmap* platformTexture;
 	QRect* platformRect;
-
+	
 };

@@ -1,5 +1,6 @@
 #pragma once
 #include "Platform.h"
+#include "PlatformBreakable.h"
 #include "Enemy.h"
 #include "Ground.h"
 #include <math.h>
@@ -28,6 +29,7 @@ public:
 private:
 	std::vector<Enemy*> _enemies;
 	std::vector<Platform*> _platforms;
+	std::vector<PlatformBreakable*>_platformBreakable;
 
 	Ground* ground;
 	Player* player;

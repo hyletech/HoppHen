@@ -50,12 +50,15 @@ void WorldManager::Update()
 		_platforms[i]->update(player);
 
 		//Flyttar plattformen om den går under bottomboundary
-		if (_platforms[i]->getRect().y() > bottomBoundary)
+		if (_platforms[i]->getRect().y() > bottomBoundary || _platformBreakable[i]->getRect().y() > bottomBoundary)
 		{
 			int xPos = dis(gen);
 			_platforms[i]->setPos(topBoundary, xPos);
+			_platformBreakable[i]->setPos(topBoundary, xPos);
 		}
+
 	}
+
 
 	//Flytta och uppdatera fiender samt kontrollera hitcheck
 	for (int i = 0; i < _enemies.size(); i++)
@@ -128,6 +131,14 @@ void WorldManager::initPlatforms()
 		Platform* p = new Platform(xPos, yPos);
 		_platforms.push_back(p);
 	}
+
+
+	if (!_platformBreakable.size() == 0)
+	{
+		for_each(_platformBreakable.begin(), _platformBreakable.end(), std::default_delete<Platform>());
+		_platformBreakable.clear();
+	}
+
 }
 
 void WorldManager::initEnemies()

@@ -14,5 +14,5 @@ class PlatformBreakable : public Platform
 		void disappearEffect();
 
 private:
-		Platform* _platform;
+		PlatformBreakable* _platformBreakable;
 };
