@@ -1,62 +1,104 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_hopphen.cpp" />
     <ClCompile Include="GeneratedFiles\qrc_hopphen.cpp" />
     <ClCompile Include="GeneratedFiles\Release\moc_hopphen.cpp" />
-    <ClCompile Include="Ground.cpp" />
-    <ClCompile Include="hopphen.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Platform.cpp" />
-    <ClCompile Include="PlatformBreakable.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="ScoreManager.cpp" />
-    <ClCompile Include="Shot.cpp" />
-    <ClCompile Include="WorldManager.cpp" />
     <ClCompile Include="PlatformNormal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ground.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hopphen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlatformBreakable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Shot.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Enemy.h" />
     <ClInclude Include="GeneratedFiles\ui_hopphen.h" />
-    <ClInclude Include="defines.h" />
-    <ClInclude Include="Ground.h" />
-    <ClInclude Include="includes.h" />
-    <ClInclude Include="Platform.h" />
-    <ClInclude Include="PlatformBreakable.h" />
-    <ClInclude Include="Player.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="ScoreManager.h" />
-    <ClInclude Include="WorldManager.h" />
     <ClInclude Include="PlatformNormal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlatformBreakable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ground.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="defines.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="hopphen.h" />
     <CustomBuild Include="hopphen.ui" />
-    <CustomBuild Include="Shot.h" />
     <CustomBuild Include="hopphen.qrc" />
+    <CustomBuild Include="Shot.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="hopphen.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="HoppHen.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Desktop\monster1.png" />
-    <Image Include="..\..\..\..\GitHub\HoppHen\Eivind.png" />
-    <Image Include="..\..\..\..\Pictures\DarkenedLose.png" />
-    <Image Include="..\..\..\..\Pictures\Dirt.png" />
     <Image Include="..\..\..\..\Pictures\ScoreScreen.png" />
-    <Image Include="..\..\..\..\Visual Studio 2015\Projects\SpelProjekt\SpelProjekt\SpelProjektContent\Images\BackGround.png" />
-    <Image Include="bitmap1.bmp" />
-    <Image Include="EivindDead.png" />
     <Image Include="IntroScreen.png" />
     <Image Include="monster-clip-art-flying-monster-clipart.png" />
     <Image Include="ScoreTab.png" />
     <Image Include="shot.png" />
     <Image Include="pizzahutBreak.png" />
+    <Image Include="..\..\..\..\Visual Studio 2015\Projects\SpelProjekt\SpelProjekt\SpelProjektContent\Images\BackGround.png" />
+    <Image Include="..\..\..\..\Pictures\DarkenedLose.png" />
+    <Image Include="bitmap1.bmp" />
+    <Image Include="..\..\..\..\Pictures\Dirt.png" />
+    <Image Include="..\..\..\..\GitHub\HoppHen\Eivind.png" />
+    <Image Include="EivindDead.png" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="HiScores.txt" />
