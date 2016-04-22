@@ -52,22 +52,6 @@ void WorldManager::Update()
 		}
 	}
 
-	//Kontrollera breakable plattformar
-	for (int i = 0; i < _breakablePlatforms.size(); i++)
-	{
-		_breakablePlatforms[i]->startMove(worldSpeed);
-		_breakablePlatforms[i]->update(player);
-
-		//Flyttar plattformen om den går under bottomboundary
-		if (_breakablePlatforms[i]->getRect().y() > bottomBoundary)
-		{
-			_breakablePlatforms.erase(_breakablePlatforms.begin() + i);
-			initPlatforms(topBoundary);
-		}
-
-	}
-
-
 	//Flytta och uppdatera fiender samt kontrollera hitcheck
 	for (int i = 0; i < _enemies.size(); i++)
 	{

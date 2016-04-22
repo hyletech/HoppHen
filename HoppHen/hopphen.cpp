@@ -47,7 +47,6 @@ void HoppHen::update() //hitcheck
 	switch (gameState)
 	{
 
-		//Intro
 	case Intro:
 			_sleep(1);
 			introTime--;
@@ -55,20 +54,15 @@ void HoppHen::update() //hitcheck
 			{
 				gameState = Game;
 			}
-
 		break;
 
-		//Game
 	case Game:
-		//Updates
 		_worldManager->Update();
 
 		if (_worldManager->lose)
 		{
 			gameState = Lose;
 		}
-
-		//_moveWorld = _player->getRect()->y() <= W_HEIGHT / 2; //flytta världen om player är över en viss y-position
 
 		//KeyInput
 		//Player movement
@@ -141,7 +135,6 @@ void HoppHen::update() //hitcheck
 
 	}
 }
-
 
 
 void HoppHen::LoseGame()
